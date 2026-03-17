@@ -1,0 +1,46 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/cre8ve/.gemini/antigravity/**)",
+      "Read(//Users/cre8ve/.claude/**)",
+      "Read(//Users/cre8ve/**)",
+      "Read(//Users/cre8ve/Downloads/**)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --no-app --src-dir=false --import-alias=\"@/*\" --use-npm)",
+      "Bash(npm install)",
+      "Bash(npm run build)",
+      "Bash(npm run dev)",
+      "Bash(open http://localhost:3000)",
+      "Bash(npx next build)",
+      "Bash(open /Users/cre8ve/Cre8ve.xyz/skills/scroll-stop-prompter/assets/prompt-page-template.html)",
+      "Bash(npm install @splinetool/runtime @splinetool/react-spline clsx tailwind-merge)",
+      "Bash(grep -r \"keyframes\\\\|animation\" /Users/cre8ve/Cre8ve.xyz --include=\"*.ts\" --include=\"*.tsx\" --include=\"*.js\" --include=\"*.css\" ! -path \"*/node_modules/*\" ! -path \"*/.next/*\")",
+      "Bash(npm install resend @vercel/analytics)",
+      "Bash(npx -y @lobehub/market-cli skills install openclaw-skills-nano-banana-antigravity --agent claude-code)",
+      "Bash(xargs ls -la)",
+      "Bash(python3 scripts/search.py \"AI enterprise dark brand guidelines presentation deck\" --design-system -p \"Cre8ve Brand Book\" -f markdown)",
+      "Bash(npx tsc --noEmit --project tsconfig.json)",
+      "Bash(lsof -ti:3000)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/brand)",
+      "Bash(open \"http://localhost:3000/brand\")",
+      "Bash(node -e \"require\\(''puppeteer''\\)\")",
+      "Bash(npm install puppeteer --save-dev)",
+      "Bash(node scripts/generate-pdf.js)",
+      "Bash(open /Users/cre8ve/Cre8ve.xyz/Brand-Guidelines/Cre8ve-Brand-Book.pdf)",
+      "Bash(brew install poppler)",
+      "Bash(pdftoppm --version)",
+      "Bash(pdftotext /Users/cre8ve/Cre8ve.xyz/Cre8ve_Company_Profile.pdf -)",
+      "Bash(pdftotext -f 7 -l 17 /Users/cre8ve/Cre8ve.xyz/Cre8ve_Company_Profile.pdf -)",
+      "Bash(pdfinfo /Users/cre8ve/Cre8ve.xyz/Cre8ve_Company_Profile.pdf)",
+      "Bash(grep -r \"rgb\\\\|#FF7A1A\\\\|#4682B4\\\\|orange\\\\|glow\" /Users/cre8ve/Cre8ve.xyz/components/*.tsx)",
+      "WebFetch(domain:www.kriraai.com)",
+      "Bash(grep -n \"href.*work\\\\|/work\" /Users/cre8ve/Cre8ve.xyz/components/*.tsx /Users/cre8ve/Cre8ve.xyz/pages/*.tsx)",
+      "Bash(ls /Users/cre8ve/Cre8ve.xyz/.env*)",
+      "Bash(grep -l \"glass-morphism\\\\|team\\\\|founder\" /Users/cre8ve/Cre8ve.xyz/styles/*.css)"
+    ],
+    "additionalDirectories": [
+      "/Users/cre8ve/.claude",
+      "/Users/cre8ve/cre8ve-temp",
+      "/Users/cre8ve/Downloads"
+    ]
+  }
+}

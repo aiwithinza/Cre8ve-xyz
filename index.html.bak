@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cre8ve | Intelligence Engineered</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#ff791a',
+            dark: '#050505',
+            surface: '#0a0a0a',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          borderRadius: {
+            'custom': '8px',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-animations">
+    @keyframes subtle-drift {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-10px) translateX(5px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+    .particle-bg {
+      background-image: radial-gradient(circle at 2px 2px, rgba(255, 121, 26, 0.05) 1px, transparent 0);
+      background-size: 40px 40px;
+    }
+    .gradient-glow {
+      background: radial-gradient(circle at 50% 50%, rgba(255, 121, 26, 0.08) 0%, transparent 70%);
+    }
+    .text-gradient-special {
+      background: linear-gradient(90deg, #ff791a 0%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-dark text-white font-sans selection:bg-brand selection:text-white">
+
+<!-- BEGIN: Navigation -->
+<header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-white/5 bg-dark/20" data-purpose="main-header">
+<nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 bg-brand rounded-custom flex items-center justify-center">
+<span class="text-dark font-heading font-bold text-xl">8</span>
+</div>
+<span class="font-heading font-medium text-xl tracking-tight">Cre8ve.xyz</span>
+</div>
+<div class="hidden md:flex items-center space-x-10 text-sm font-mono tracking-wider text-white/60">
+<a class="hover:text-brand transition-colors" href="#capabilities">CAPABILITIES</a>
+<a class="hover:text-brand transition-colors" href="#architecture">ARCHITECTURE</a>
+<a class="hover:text-brand transition-colors" href="#about">ABOUT</a>
+<a class="hover:text-brand transition-colors" href="#contact">CONTACT</a>
+</div>
+<div class="md:hidden">
+<button class="text-white/80">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</button>
+</div>
+</nav>
+</header>
+
+<!-- BEGIN: Hero Section -->
+<section class="relative h-screen flex flex-col justify-center items-center overflow-hidden px-6" data-purpose="hero-section" id="hero">
+<div class="absolute inset-0 particle-bg opacity-40"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full gradient-glow pointer-events-none"></div>
+<div class="relative z-10 text-center max-w-5xl">
+<span class="font-mono text-brand text-xs tracking-[0.3em] mb-6 block uppercase opacity-80" data-purpose="sub-label">Est. 2024 / Digital Infrastructure</span>
+<h1 class="font-heading text-5xl md:text-8xl lg:text-9xl font-light tracking-tighter leading-none mb-8">
+        INTELLIGENCE<br/><span class="font-medium">ENGINEERED.</span>
+</h1>
+<p class="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+        Cre8ve designs intelligent software systems and advanced digital infrastructure for the next generation of autonomous enterprise.
+      </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+<a class="px-8 py-4 bg-white text-dark font-medium rounded-custom hover:bg-brand hover:text-white transition-all duration-300 w-full sm:w-auto text-center" href="#contact">
+          Start a Project
+        </a>
+<a class="px-8 py-4 border border-white/20 text-white font-medium rounded-custom hover:bg-white/5 transition-all duration-300 w-full sm:w-auto text-center" href="#work">
+          Our Work
+        </a>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-20">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path></svg>
+</div>
+</section>
+
+<!-- BEGIN: Capabilities Section -->
+<section class="py-32 px-6 max-w-7xl mx-auto" data-purpose="capabilities-section" id="capabilities">
+<div class="flex flex-col md:flex-row justify-between items-baseline mb-24 gap-8">
+<h2 class="font-heading text-4xl md:text-5xl font-light">Capabilities</h2>
+<p class="font-mono text-white/40 text-sm max-w-md">Our multi-disciplinary approach allows us to architect systems that are both resilient and adaptive.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-20">
+<div class="group border-t border-white/10 py-10 flex flex-col md:flex-row md:items-center gap-6" data-purpose="capability-item">
+<span class="font-mono text-brand text-sm">01</span>
+<div class="flex-1">
+<h3 class="font-heading text-2xl mb-2">AI Systems</h3>
+<p class="text-white/50 text-sm leading-relaxed">Full-stack neural architecture tailored for specific business logic.</p>
+</div>
+</div>
+<div class="group border-t border-white/10 py-10 flex flex-col md:flex-row md:items-center gap-6" data-purpose="capability-item">
+<span class="font-mono text-brand text-sm">02</span>
+<div class="flex-1">
+<h3 class="font-heading text-2xl mb-2">Autonomous Agents</h3>
+<p class="text-white/50 text-sm leading-relaxed">Self-correcting software entities that execute complex workflows.</p>
+</div>
+</div>
+<div class="group border-t border-white/10 py-10 flex flex-col md:flex-row md:items-center gap-6" data-purpose="capability-item">
+<span class="font-mono text-brand text-sm">03</span>
+<div class="flex-1">
+<h3 class="font-heading text-2xl mb-2">AI Applications</h3>
+<p class="text-white/50 text-sm leading-relaxed">User-centric tools powered by large language and vision models.</p>
+</div>
+</div>
+<div class="group border-t border-white/10 py-10 flex flex-col md:flex-row md:items-center gap-6" data-purpose="capability-item">
+<span class="font-mono text-brand text-sm">04</span>
+<div class="flex-1">
+<h3 class="font-heading text-2xl mb-2">Infrastructure</h3>
+<p class="text-white/50 text-sm leading-relaxed">Scalable cloud-native environments designed for heavy compute.</p>
+</div>
+</div>
+<div class="group border-t border-white/10 py-10 flex flex-col md:flex-row md:items-center gap-6" data-purpose="capability-item">
+<span class="font-mono text-brand text-sm">05</span>
+<div class="flex-1">
+<h3 class="font-heading text-2xl mb-2">Interfaces</h3>
+<p class="text-white/50 text-sm leading-relaxed">Minimal, intuitive control planes for human-machine interaction.</p>
+</div>
+</div>
+<div class="group border-t border-white/10 py-10 flex flex-col md:flex-row md:items-center gap-6" data-purpose="capability-item">
+<span class="font-mono text-brand text-sm">06</span>
+<div class="flex-1">
+<h3 class="font-heading text-2xl mb-2">Integrations</h3>
+<p class="text-white/50 text-sm leading-relaxed">Seamlessly connecting intelligent layers to legacy enterprise APIs.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- BEGIN: Architecture Section -->
+<section class="py-32 bg-surface overflow-hidden" data-purpose="architecture-section" id="architecture">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-20">
+<span class="font-mono text-brand text-xs tracking-widest uppercase mb-4 block">System Schema</span>
+<h2 class="font-heading text-4xl md:text-5xl font-light">The Cre8ve Framework</h2>
+</div>
+<div class="relative w-full max-w-4xl mx-auto h-[400px] flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full pointer-events-none" viewbox="0 0 800 400">
+<defs>
+<lineargradient id="lineGrad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" style="stop-color:rgba(255, 121, 26, 0.1);stop-opacity:1"></stop>
+<stop offset="50%" style="stop-color:rgba(255, 121, 26, 0.5);stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:rgba(255, 121, 26, 0.1);stop-opacity:1"></stop>
+</lineargradient>
+</defs>
+<line stroke="url(#lineGrad)" stroke-width="1" x1="200" x2="400" y1="100" y2="200"></line>
+<line stroke="url(#lineGrad)" stroke-width="1" x1="200" x2="400" y1="300" y2="200"></line>
+<line stroke="url(#lineGrad)" stroke-width="1" x1="600" x2="400" y1="100" y2="200"></line>
+<line stroke="url(#lineGrad)" stroke-width="1" x1="600" x2="400" y1="300" y2="200"></line>
+<line stroke="rgba(255, 121, 26, 0.1)" stroke-width="1" x1="200" x2="200" y1="100" y2="300"></line>
+<line stroke="rgba(255, 121, 26, 0.1)" stroke-width="1" x1="600" x2="600" y1="100" y2="300"></line>
+</svg>
+<div class="absolute top-[25%] left-[25%] -translate-x-1/2 -translate-y-1/2">
+<div class="px-6 py-3 border border-brand/30 bg-dark rounded-custom text-xs font-mono tracking-tighter text-brand/80">MODELS</div>
+</div>
+<div class="absolute bottom-[25%] left-[25%] -translate-x-1/2 translate-y-1/2">
+<div class="px-6 py-3 border border-white/10 bg-dark rounded-custom text-xs font-mono tracking-tighter text-white/50">DATA</div>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+<div class="px-8 py-4 border border-brand bg-brand/5 shadow-[0_0_30px_rgba(255,121,26,0.2)] rounded-custom text-sm font-mono tracking-widest text-brand font-bold">ORCHESTRATION</div>
+</div>
+<div class="absolute top-[25%] right-[25%] translate-x-1/2 -translate-y-1/2">
+<div class="px-6 py-3 border border-white/10 bg-dark rounded-custom text-xs font-mono tracking-tighter text-white/50">AGENTS</div>
+</div>
+<div class="absolute bottom-[25%] right-[25%] translate-x-1/2 translate-y-1/2">
+<div class="px-6 py-3 border border-white/10 bg-dark rounded-custom text-xs font-mono tracking-tighter text-white/50">INTERFACES</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- BEGIN: CTA Section -->
+<section class="py-40 px-6 relative overflow-hidden" data-purpose="cta-section">
+<div class="max-w-7xl mx-auto text-center relative z-10">
+<h2 class="font-heading text-5xl md:text-8xl font-light mb-16 max-w-5xl mx-auto leading-tight">
+        BUILD THE FUTURE WITH <span class="text-gradient-special font-medium">INTELLIGENCE.</span>
+</h2>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+<a class="px-12 py-5 bg-brand text-white font-medium rounded-custom hover:opacity-90 transition-all duration-300 w-full sm:w-auto" href="#contact">
+          Start a Project
+        </a>
+<a class="px-12 py-5 border border-white/10 text-white font-medium rounded-custom hover:bg-white/5 transition-all duration-300 w-full sm:w-auto" href="#contact">
+          Contact
+        </a>
+</div>
+</div>
+<div class="absolute -bottom-20 left-1/2 -translate-x-1/2 opacity-[0.02] select-none pointer-events-none">
+<h3 class="text-[20rem] font-heading font-bold">CRE8VE</h3>
+</div>
+</section>
+
+<!-- BEGIN: Footer -->
+<footer class="py-12 border-t border-white/5 px-6" data-purpose="site-footer">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center space-x-2">
+<div class="w-6 h-6 bg-white/10 rounded-sm flex items-center justify-center">
+<span class="text-white/40 font-heading font-bold text-xs">8</span>
+</div>
+<span class="font-heading text-sm text-white/40 tracking-tight">&copy; 2024 Cre8ve Intelligence Lab.</span>
+</div>
+<div class="flex items-center space-x-8 text-xs font-mono text-white/30 uppercase tracking-widest">
+<a class="hover:text-brand transition-colors" href="#">Twitter</a>
+<a class="hover:text-brand transition-colors" href="#">GitHub</a>
+<a class="hover:text-brand transition-colors" href="#">LinkedIn</a>
+</div>
+<div class="text-xs font-mono text-white/20">
+        Engineered for Excellence.
+      </div>
+</div>
+</footer>
+
+</body></html>

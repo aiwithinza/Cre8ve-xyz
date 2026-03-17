@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{OBJECT_NAME}} — Scroll-Stop Prompts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --lime: #BFF549;
+      --lime-dim: rgba(191, 245, 73, 0.15);
+      --lime-glow: rgba(191, 245, 73, 0.3);
+      --bg: #02040a;
+      --bg-card: rgba(255, 255, 255, 0.04);
+      --bg-card-hover: rgba(255, 255, 255, 0.07);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-active: rgba(191, 245, 73, 0.4);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --text-bright: #fafafa;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Archivo', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Floating orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 {
+      width: 400px; height: 400px;
+      background: rgba(191, 245, 73, 0.06);
+      top: -100px; right: -100px;
+      animation: float1 20s ease-in-out infinite;
+    }
+    .orb-2 {
+      width: 300px; height: 300px;
+      background: rgba(191, 245, 73, 0.04);
+      bottom: -50px; left: -50px;
+      animation: float2 25s ease-in-out infinite;
+    }
+    .orb-3 {
+      width: 200px; height: 200px;
+      background: rgba(120, 200, 255, 0.03);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: float3 18s ease-in-out infinite;
+    }
+
+    @keyframes float1 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-40px, 30px); }
+    }
+    @keyframes float2 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(30px, -40px); }
+    }
+    @keyframes float3 {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.2); }
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--lime-dim);
+      border: 1px solid rgba(191, 245, 73, 0.2);
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--lime);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 24px;
+    }
+    .badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--lime);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 8vw, 72px);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -2px;
+      color: var(--text-bright);
+    }
+    h1 .line2 {
+      color: var(--text-dim);
+    }
+    .subtitle {
+      margin-top: 16px;
+      font-size: 15px;
+      color: var(--text-dim);
+      font-family: var(--font-body);
+    }
+    .kbd {
+      display: inline-block;
+      padding: 2px 7px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      vertical-align: middle;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 4px;
+      margin-bottom: 20px;
+    }
+    .tab {
+      flex: 1;
+      padding: 12px 16px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+    .tab .tab-full { display: inline; }
+    .tab .tab-short { display: none; }
+    .tab:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+    }
+    .tab.active {
+      background: var(--bg-card-hover);
+      border-color: var(--border-active);
+      color: var(--lime);
+      box-shadow: 0 0 20px rgba(191, 245, 73, 0.08);
+    }
+    .tab-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px; height: 22px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 5px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .tab.active .tab-letter {
+      background: var(--lime-dim);
+      color: var(--lime);
+    }
+
+    /* Prompt cards */
+    .prompt-panel {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .prompt-panel.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .card-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: var(--lime);
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--bg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .copy-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(191, 245, 73, 0.3);
+    }
+    .copy-btn:active {
+      transform: translateY(0);
+    }
+    .copy-btn.copied {
+      background: #22c55e;
+    }
+    .copy-btn svg {
+      width: 14px; height: 14px;
+    }
+
+    .prompt-text {
+      padding: 24px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+    .prompt-text::-webkit-scrollbar { width: 6px; }
+    .prompt-text::-webkit-scrollbar-track { background: transparent; }
+    .prompt-text::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .footer p {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+
+    /* Confetti canvas */
+    #confetti-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container { padding: 32px 16px 60px; }
+      h1 { letter-spacing: -1px; }
+      .tab .tab-full { display: none; }
+      .tab .tab-short { display: inline; }
+      .tab-letter { margin-right: 4px; }
+      .tab { padding: 10px 8px; font-size: 13px; }
+      .prompt-text { padding: 16px; font-size: 12px; }
+      .card-header { padding: 12px 16px; }
+      .subtitle { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="container">
+    <div class="header">
+      <div class="badge">Scroll-Stop Prompts</div>
+      <h1>
+        {{HEADING_LINE1}}<br>
+        <span class="line2">{{HEADING_LINE2}}</span>
+      </h1>
+      <p class="subtitle">
+        Press <span class="kbd">1</span> <span class="kbd">2</span> <span class="kbd">3</span> to switch tabs
+      </p>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" role="tab" data-tab="a" aria-selected="true">
+        <span class="tab-letter">A</span>
+        <span class="tab-full">{{TAB_A_NAME}}</span>
+        <span class="tab-short">{{TAB_A_SHORT}}</span>
+      </button>
+      <button class="tab" role="tab" data-tab="b" aria-selected="false">
+        <span class="tab-letter">B</span>
+        <span class="tab-full">{{TAB_B_NAME}}</span>
+        <span class="tab-short">{{TAB_B_SHORT}}</span>
+      </button>
+      <button class="tab" role="tab" data-tab="c" aria-selected="false">
+        <span class="tab-letter">C</span>
+        <span class="tab-full">Video Transition</span>
+        <span class="tab-short">Video</span>
+      </button>
+    </div>
+
+    <div class="prompt-panel active" data-panel="a">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-label">Prompt A &mdash; {{TAB_A_NAME}}</span>
+          <button class="copy-btn" data-target="prompt-a">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <div class="prompt-text" id="prompt-a">{{PROMPT_A}}</div>
+      </div>
+    </div>
+
+    <div class="prompt-panel" data-panel="b">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-label">Prompt B &mdash; {{TAB_B_NAME}}</span>
+          <button class="copy-btn" data-target="prompt-b">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <div class="prompt-text" id="prompt-b">{{PROMPT_B}}</div>
+      </div>
+    </div>
+
+    <div class="prompt-panel" data-panel="c">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-label">Prompt C &mdash; Video Transition</span>
+          <button class="copy-btn" data-target="prompt-c">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <div class="prompt-text" id="prompt-c">{{PROMPT_C}}</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Generated by Scroll-Stop Prompter</p>
+    </div>
+  </div>
+
+  <script>
+    // Tab switching
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.prompt-panel');
+
+    function switchTab(tabId) {
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      panels.forEach(p => p.classList.remove('active'));
+      const activeTab = document.querySelector(`.tab[data-tab="${tabId}"]`);
+      const activePanel = document.querySelector(`.prompt-panel[data-panel="${tabId}"]`);
+      if (activeTab && activePanel) {
+        activeTab.classList.add('active');
+        activeTab.setAttribute('aria-selected', 'true');
+        activePanel.classList.add('active');
+      }
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === '1') switchTab('a');
+      if (e.key === '2') switchTab('b');
+      if (e.key === '3') switchTab('c');
+    });
+
+    // Confetti
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    let confettiPieces = [];
+    let animating = false;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    function createConfetti(x, y) {
+      const colors = ['#BFF549', '#22c55e', '#facc15', '#38bdf8', '#f472b6', '#ffffff'];
+      for (let i = 0; i < 60; i++) {
+        confettiPieces.push({
+          x, y,
+          vx: (Math.random() - 0.5) * 16,
+          vy: (Math.random() - 1) * 14 - 4,
+          w: Math.random() * 8 + 4,
+          h: Math.random() * 4 + 2,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rotSpeed: (Math.random() - 0.5) * 12,
+          gravity: 0.4 + Math.random() * 0.2,
+          opacity: 1,
+          decay: 0.008 + Math.random() * 0.008,
+        });
+      }
+      if (!animating) {
+        animating = true;
+        animateConfetti();
+      }
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confettiPieces = confettiPieces.filter(p => p.opacity > 0);
+      if (confettiPieces.length === 0) { animating = false; return; }
+
+      confettiPieces.forEach(p => {
+        p.x += p.vx;
+        p.vy += p.gravity;
+        p.y += p.vy;
+        p.vx *= 0.98;
+        p.rotation += p.rotSpeed;
+        p.opacity -= p.decay;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.globalAlpha = Math.max(0, p.opacity);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+
+      requestAnimationFrame(animateConfetti);
+    }
+
+    // Copy buttons
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const targetId = btn.dataset.target;
+        const text = document.getElementById(targetId).textContent;
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copied!`;
+          btn.classList.add('copied');
+
+          const rect = btn.getBoundingClientRect();
+          createConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2);
+
+          setTimeout(() => {
+            btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy`;
+            btn.classList.remove('copied');
+          }, 2000);
+        } catch {
+          btn.textContent = 'Failed';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

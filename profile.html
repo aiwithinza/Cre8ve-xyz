@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cre8ve AI Solutions — Company Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        pumpkin: '#FF7A1A',
+                        steelblue: '#4682B4',
+                        deepblack: '#050505',
+                        purewhite: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['"Space Grotesk"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(to right, #FF7A1A, #4682B4)',
+                        'gradient-dark': 'linear-gradient(to bottom right, #4682B4, #050505)',
+                        'gradient-glass': 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .slide {
+            width: 1920px;
+            height: 1080px;
+            position: relative;
+            overflow: hidden;
+            background-color: #050505;
+            page-break-after: always;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .glow-orange {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,122,26,0.15) 0%, rgba(5,5,5,0) 70%);
+            top: -200px;
+            left: -200px;
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glow-blue {
+            position: absolute;
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, rgba(70,130,180,0.15) 0%, rgba(5,5,5,0) 70%);
+            bottom: -300px;
+            right: -200px;
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bg-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glass-panel {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 24px;
+        }
+
+        .content {
+            z-index: 10;
+            position: relative;
+        }
+
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #FF7A1A, #4682B4);
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+            display: inline;
+            padding-right: 0.1em;
+        }
+
+        @page {
+            size: 1920px 1080px;
+            margin: 0;
+        }
+        
+        .bullet-point::before {
+            content: "•";
+            color: #FF7A1A;
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-pumpkin selection:text-white relative">
+
+
+
+    <!-- Slide 1: HERO -->
+    <div class="slide flex items-center justify-center relative">
+        <div class="glow-orange"></div>
+        <div class="glow-blue"></div>
+        <div class="bg-grid"></div>
+        
+        <div class="content flex flex-col items-center justify-center w-full px-32 h-full text-center">
+            <div class="inline-flex items-center space-x-3 bg-white/5 border border-white/10 rounded-full px-5 py-2 w-max backdrop-blur-md mb-8">
+                <span class="w-2 h-2 rounded-full bg-pumpkin animate-pulse"></span>
+                <span class="font-mono text-pumpkin tracking-widest text-sm uppercase">Women-Led AI Ecosystem</span>
+            </div>
+            
+            <div class="mb-12">
+                <svg
+                    height="120"
+                    viewBox="0 0 240 80"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="block mx-auto"
+                >
+                    <defs>
+                        <linearGradient id="cre8ve-grad-hero" x1="0%" y1="0%" x2="50%" y2="100%">
+                            <stop offset="0%" stop-color="#4682B4" />
+                            <stop offset="60%" stop-color="#FF7A1A" />
+                            <stop offset="100%" stop-color="#FF7A1A" />
+                        </linearGradient>
+                    </defs>
+                    <path
+                        d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z"
+                        fill="url(#cre8ve-grad-hero)"
+                    />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="url(#cre8ve-grad-hero)" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </div>
+            
+            <h1 class="font-heading text-[120px] leading-[1] font-bold text-white tracking-tight mb-8">
+                Human <span class="text-gradient">by design.</span><br/>
+                Powered by AI.
+            </h1>
+            
+            <p class="text-4xl text-gray-400 font-light max-w-4xl leading-relaxed mb-16">
+                Building the AI layer that works for everyone—not just the few who already know how.
+            </p>
+            
+            <div class="flex space-x-8">
+                <div class="glass-panel px-8 py-4 flex items-center space-x-3">
+                    <span class="text-2xl">Kochi, Kerala</span>
+                </div>
+                <div class="glass-panel px-8 py-4 flex items-center space-x-3">
+                    <span class="text-2xl">Est. 2026</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: THE INTRO -->
+    <div class="slide p-24">
+        <div class="bg-grid"></div>
+        <div class="content flex flex-col h-full">
+            <header class="flex justify-between items-center mb-16 border-b border-white/10 pb-8">
+                <h2 class="font-heading text-4xl font-bold tracking-tight text-white">01. <span class="text-gradient">The Introduction</span></h2>
+                <svg
+                    height="40"
+                    viewBox="0 0 240 80"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="block"
+                >
+                    <defs>
+                        <linearGradient id="cre8ve-grad-s2" x1="0%" y1="0%" x2="50%" y2="100%">
+                            <stop offset="0%" stop-color="#4682B4" />
+                            <stop offset="60%" stop-color="#FF7A1A" />
+                            <stop offset="100%" stop-color="#FF7A1A" />
+                        </linearGradient>
+                    </defs>
+                    <path
+                        d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z"
+                        fill="url(#cre8ve-grad-s2)"
+                    />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="url(#cre8ve-grad-s2)" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </header>
+            
+            <div class="grid grid-cols-2 gap-24 h-full items-center">
+                <div class="glass-panel p-16">
+                    <h3 class="font-heading text-7xl font-bold mb-10 leading-tight">A Single <br/><span class="text-gradient">Mission</span></h3>
+                    <p class="text-3xl text-gray-300 font-light leading-relaxed">
+                        To bridge the gap between everyday people and the tools that were always supposed to work for them.
+                    </p>
+                </div>
+                <div class="space-y-12">
+                    <p class="text-4xl font-light text-white leading-tight">
+                        We build AI products that don't require <br/>
+                        <span class="text-pumpkin font-medium">a manual</span>, 
+                        <span class="text-steelblue font-medium">a degree</span>, or 
+                        <span class="text-pumpkin font-medium">a head start</span>.
+                    </p>
+                    <div class="h-1 w-32 bg-gradient-primary"></div>
+                    <p class="text-2xl text-gray-400 max-w-xl">
+                        Headquartered in Kochi, Kerala, India — Cre8ve AI Solutions is redefining human-centered intelligence for the global workforce.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: OUR STORY - THE BELIEF -->
+    <div class="slide p-24">
+        <div class="glow-orange"></div>
+        <div class="bg-grid"></div>
+        <div class="content flex flex-col h-full">
+            <header class="flex justify-between items-center mb-16 border-b border-white/10 pb-8">
+                <h2 class="font-heading text-4xl font-bold tracking-tight text-white">02. <span class="text-gradient">Our Story</span></h2>
+                <svg
+                    height="40"
+                    viewBox="0 0 240 80"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="block"
+                >
+                    <defs>
+                        <linearGradient id="cre8ve-grad-s3" x1="0%" y1="0%" x2="50%" y2="100%">
+                            <stop offset="0%" stop-color="#4682B4" />
+                            <stop offset="60%" stop-color="#FF7A1A" />
+                            <stop offset="100%" stop-color="#FF7A1A" />
+                        </linearGradient>
+                    </defs>
+                    <path
+                        d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z"
+                        fill="url(#cre8ve-grad-s3)"
+                    />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+            <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="url(#cre8ve-grad-s3)" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </header>
+            
+            <div class="flex-grow flex flex-col justify-center">
+                <h3 class="font-heading text-[100px] font-bold mb-12 tracking-tighter text-white">Two builders. <span class="text-gradient">One belief.</span></h3>
+                
+                <div class="grid grid-cols-12 gap-16">
+                    <div class="col-span-8">
+                        <p class="text-4xl text-gray-300 font-light leading-relaxed mb-12">
+                            Most AI companies are building for the technically empowered. <br/>
+                            <strong class="text-white font-medium">We're building for everyone else.</strong>
+                        </p>
+                        <p class="text-2xl text-gray-400 font-light leading-relaxed">
+                            Cre8ve AI Solutions was born from a very personal observation: despite the explosion of AI tools, the average person still feels left behind—overwhelmed, underserved, or simply unable to translate AI's promise into something practical in their daily lives. We started this company because we've lived that gap from both sides.
+                        </p>
+                    </div>
+                    <div class="col-span-4 flex items-end">
+                        <div class="glass-panel p-10 border-l-4 border-pumpkin bg-[#0A0A0A]">
+                            <p class="text-2xl text-white font-medium italic">"We've lived that gap from both sides."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: THE FOUNDING PRINCIPLE -->
+    <div class="slide p-24">
+        <div class="bg-grid"></div>
+        <div class="content flex flex-col h-full">
+            <header class="flex justify-between items-center mb-16 border-b border-white/10 pb-8">
+                <h2 class="font-heading text-4xl font-bold tracking-tight text-white">03. <span class="text-gradient">The Foundational Synergy</span></h2>
+                <svg
+                    height="40"
+                    viewBox="0 0 240 80"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="block"
+                >
+                    <defs>
+                        <linearGradient id="cre8ve-grad-s4" x1="0%" y1="0%" x2="50%" y2="100%">
+                            <stop offset="0%" stop-color="#4682B4" />
+                            <stop offset="60%" stop-color="#FF7A1A" />
+                            <stop offset="100%" stop-color="#FF7A1A" />
+                        </linearGradient>
+                    </defs>
+                    <path
+                        d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z"
+                        fill="url(#cre8ve-grad-s4)"
+                    />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+            <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="url(#cre8ve-grad-s4)" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </header>
+            
+            <div class="grid grid-cols-2 gap-16 flex-grow items-center">
+                <div class="space-y-16">
+                    <div class="space-y-6">
+                        <h4 class="font-mono text-pumpkin tracking-widest text-lg uppercase">The Bridge</h4>
+                        <p class="text-3xl text-gray-300 leading-relaxed font-light">
+                            <strong class="text-white">Prayaga</strong> translates complex strategy into something real and accessible. She spent a decade translating strategy into growth for brands and celebrity media. Now, she's translating AI.
+                        </p>
+                    </div>
+                    <div class="space-y-6">
+                        <h4 class="font-mono text-steelblue tracking-widest text-lg uppercase">The Frontier</h4>
+                        <p class="text-3xl text-gray-300 leading-relaxed font-light">
+                            <strong class="text-white font-medium">Inza</strong> builds the infrastructure that lasts. With a record scaling platforms to <span class="text-white font-medium">$1B Market Cap</span> and <span class="text-white font-medium">500,000+ users</span>, he ensures the promise Scales.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="glass-panel p-16 h-full flex flex-col justify-center relative overflow-hidden">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-pumpkin/20 blur-3xl rounded-full"></div>
+                    <h3 class="font-heading text-5xl font-bold mb-8 text-white">A Majority Female-Owned Firm</h3>
+                    <p class="text-2xl text-gray-400 font-light leading-relaxed mb-8">
+                        This isn't a footnote—it's a founding principle. 
+                    </p>
+                    <p class="text-3xl text-white font-medium">
+                        "Building AI for everyone starts with building it from a perspective that includes everyone."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: MISSION, VISION & VALUES -->
+    <div class="slide p-24">
+        <div class="glow-blue" style="top: auto; bottom: 0; right: 0;"></div>
+        <div class="bg-grid"></div>
+        <div class="content flex flex-col h-full">
+            <header class="flex justify-between items-center mb-16 border-b border-white/10 pb-8">
+                <h2 class="font-heading text-4xl font-bold tracking-tight text-white">04. <span class="text-gradient">Mission, Vision & Values</span></h2>
+                <svg
+                    height="40"
+                    viewBox="0 0 240 80"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="block"
+                >
+                    <defs>
+                        <linearGradient id="cre8ve-grad-s5" x1="0%" y1="0%" x2="50%" y2="100%">
+                            <stop offset="0%" stop-color="#4682B4" />
+                            <stop offset="60%" stop-color="#FF7A1A" />
+                            <stop offset="100%" stop-color="#FF7A1A" />
+                        </linearGradient>
+                    </defs>
+                    <path
+                        d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z"
+                        fill="url(#cre8ve-grad-s5)"
+                    />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+            <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="url(#cre8ve-grad-s5)" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </header>
+            
+            <div class="grid grid-cols-12 gap-12 mb-12">
+                <div class="col-span-6 glass-panel p-12 bg-white/5">
+                    <h4 class="font-mono text-pumpkin mb-4 uppercase tracking-wider text-sm">Our Mission</h4>
+                    <p class="text-2xl text-gray-300 font-light">
+                        To bridge the gap between everyday people and the transformative power of AI — building products that are intuitive, accessible, and genuinely useful for real people navigating real challenges.
+                    </p>
+                </div>
+                <div class="col-span-6 glass-panel p-12 bg-[#0A0A0A]">
+                    <h4 class="font-mono text-steelblue mb-4 uppercase tracking-wider text-sm">Our Vision</h4>
+                    <p class="text-2xl text-gray-300 font-light">
+                        To become the most human-centered AI company in the world — where every product empowers ordinary people to do extraordinary things, regardless of technical background.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-5 gap-6 flex-grow">
+                <div class="glass-panel p-8 space-y-4">
+                    <h4 class="font-heading text-xl font-bold text-white uppercase">01. Human-First</h4>
+                    <p class="text-base text-gray-400">Technology serves the person. Every decision starts with: "Does this make life easier for a real human?"</p>
+                </div>
+                <div class="glass-panel p-8 space-y-4">
+                    <h4 class="font-heading text-xl font-bold text-white uppercase">02. Radical Accessibility</h4>
+                    <p class="text-base text-gray-400">If you need a tutorial, it isn't finished. We build until it's obvious.</p>
+                </div>
+                <div class="glass-panel p-8 space-y-4">
+                    <h4 class="font-heading text-xl font-bold text-white uppercase">03. Purposeful Innovation</h4>
+                    <p class="text-base text-gray-400">We don't build features. We solve problems. Real people, real needs.</p>
+                </div>
+                <div class="glass-panel p-8 space-y-4">
+                    <h4 class="font-heading text-xl font-bold text-white uppercase">04. Women-Led Excellence</h4>
+                    <p class="text-base text-gray-400">Diversity is a structural advantage. We ask different questions, so we build different solutions.</p>
+                </div>
+                <div class="glass-panel p-8 space-y-4">
+                    <h4 class="font-heading text-xl font-bold text-white uppercase">05. Quiet Determination</h4>
+                    <p class="text-base text-gray-400">We don't announce—we deliver. The work speaks first and loudest.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: THE BELIEF -->
+    <div class="slide p-24">
+        <div class="bg-grid"></div>
+        <div class="content flex flex-col h-full justify-center">
+            <header class="flex justify-between items-center mb-16 border-b border-white/10 pb-8">
+                <h2 class="font-heading text-4xl font-bold tracking-tight text-white">05. <span class="text-gradient">Closing the AI Gap</span></h2>
+                <svg
+                    height="40"
+                    viewBox="0 0 240 80"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="block"
+                >
+                    <defs>
+                        <linearGradient id="cre8ve-grad-s6" x1="0%" y1="0%" x2="50%" y2="100%">
+                            <stop offset="0%" stop-color="#4682B4" />
+                            <stop offset="60%" stop-color="#FF7A1A" />
+                            <stop offset="100%" stop-color="#FF7A1A" />
+                        </linearGradient>
+                    </defs>
+                    <path
+                        d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z"
+                        fill="url(#cre8ve-grad-s6)"
+                    />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+            <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="url(#cre8ve-grad-s6)" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </header>
+            
+            <h3 class="font-heading text-8xl font-bold mb-12 tracking-tight">The AI gap is <span class="text-gradient">real.</span> <br/>We're closing it.</h3>
+            
+            <div class="grid grid-cols-2 gap-24">
+                <div class="space-y-8">
+                    <p class="text-3xl text-gray-300 font-light leading-relaxed">
+                        The tools today were built by engineers, for engineers. The average student, professional, or person navigating a hard season hasn't been handed a key—they've been handed a brochure.
+                    </p>
+                    <p class="text-4xl font-medium text-white italic">
+                        "We're not building the smartest AI. We're building the most useful one."
+                    </p>
+                </div>
+                <div class="glass-panel p-12 bg-white/5 border-l-4 border-steelblue">
+                    <p class="text-2xl text-gray-300 font-light leading-relaxed mb-8">
+                        At Cre8ve, we build the <strong class="text-white">layer in-between</strong>. We take raw intelligence and turn it into something a job seeker in Kochi or a student in Lucknow can actually use to win.
+                    </p>
+                    <div class="inline-flex items-center space-x-3 text-pumpkin font-mono uppercase tracking-widest">
+                        <span>Dynamic Contextual Intelligence</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: PRODUCT PIPELINE - PHASE 1 -->
+    <div class="slide p-24">
+        <div class="glow-orange" style="top: auto; bottom: 0; left: 0;"></div>
+        <div class="bg-grid"></div>
+        <div class="content flex flex-col h-full">
+            <header class="flex justify-between items-center mb-16 border-b border-white/10 pb-8">
+                <h2 class="font-heading text-4xl font-bold tracking-tight text-white">06. <span class="text-gradient">Product Ecosystem: Phase 1</span></h2>
+                <div class="flex items-center space-x-6">
+                    <svg
+                        height="40"
+                        viewBox="0 0 240 80"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="block"
+                    >
+                        <defs>
+                            <linearGradient id="cre8ve-grad-s7" x1="0%" y1="0%" x2="50%" y2="100%">
+                                <stop offset="0%" stop-color="#4682B4" />
+                                <stop offset="60%" stop-color="#FF7A1A" />
+                                <stop offset="100%" stop-color="#FF7A1A" />
+                            </linearGradient>
+                        </defs>
+                        <path
+                            d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z"
+                            fill="url(#cre8ve-grad-s7)"
+                        />
+                        <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                        <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="url(#cre8ve-grad-s7)" letter-spacing="-1">8</text>
+                        <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                        <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    </svg>
+                    <div class="inline-block px-4 py-1 rounded-full border border-pumpkin/30 text-pumpkin font-mono text-sm uppercase">MVP — Live Now</div>
+                </div>
+            </header>
+            
+            <div class="grid grid-cols-2 gap-12 flex-grow">
+                <div class="glass-panel p-12 flex flex-col h-full bg-[#0A0A0A]">
+                    <div class="flex justify-between items-start mb-8">
+                        <h3 class="font-heading text-5xl font-bold text-white">AI Resume Builder</h3>
+                        <span class="text-4xl text-pumpkin">⚡</span>
+                    </div>
+                    <p class="text-2xl text-gray-300 font-light mb-8 flex-grow leading-relaxed">
+                        The job application process is broken. Tailoring a single application still takes 45–120 minutes—before ATS bots even filter you out.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center text-xl text-gray-400">
+                            <span class="w-6 h-6 rounded-full border border-pumpkin flex items-center justify-center text-pumpkin mr-4 text-sm font-bold">✓</span>
+                            <span>2-Click Profile Sync (LinkedIn/Indeed/Naukri)</span>
+                        </div>
+                        <div class="flex items-center text-xl text-gray-400">
+                            <span class="w-6 h-6 rounded-full border border-pumpkin flex items-center justify-center text-pumpkin mr-4 text-sm font-bold">✓</span>
+                            <span>Reverse-engineered ATS Matching (50+ Platforms)</span>
+                        </div>
+                    </div>
+                    <p class="text-xl text-gray-500 font-mono">Job-ready resume in under 2 minutes.</p>
+                </div>
+
+                <div class="glass-panel p-12 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-8">
+                        <h3 class="font-heading text-5xl font-bold text-white">AI Companion App</h3>
+                        <span class="text-4xl text-steelblue">🧠</span>
+                    </div>
+                    <p class="text-2xl text-gray-300 font-light mb-8 flex-grow leading-relaxed">
+                        Modern life is full—and full lives can be lonely. This isn't a chatbot; it's an adaptive pocket companion for your mental well-being and productivity.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center text-xl text-gray-400">
+                            <span class="w-6 h-6 rounded-full border border-steelblue flex items-center justify-center text-steelblue mr-4 text-sm font-bold">✓</span>
+                            <span>Emotional-State Adaptive Responses</span>
+                        </div>
+                        <div class="flex items-center text-xl text-gray-400">
+                            <span class="w-6 h-6 rounded-full border border-steelblue flex items-center justify-center text-steelblue mr-4 text-sm font-bold">✓</span>
+                            <span>Intelligent Focus & Productivity Sessions</span>
+                        </div>
+                    </div>
+                    <p class="text-xl text-gray-500 font-mono">More than a list—a companion that grows with you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: PRODUCT PIPELINE - PHASE 2 -->
+    <div class="slide p-24">
+        <div class="bg-grid"></div>
+        <div class="content flex flex-col h-full">
+            <header class="flex justify-between items-center mb-16 border-b border-white/10 pb-8">
+                <h2 class="font-heading text-4xl font-bold tracking-tight text-white">07. <span class="text-gradient">Product Ecosystem: Future</span></h2>
+                <div class="flex items-center space-x-6">
+                    <svg
+                        height="40"
+                        viewBox="0 0 240 80"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="block"
+                    >
+                        <defs>
+                            <linearGradient id="cre8ve-grad-s8" x1="0%" y1="0%" x2="50%" y2="100%">
+                                <stop offset="0%" stop-color="#4682B4" />
+                                <stop offset="60%" stop-color="#FF7A1A" />
+                                <stop offset="100%" stop-color="#FF7A1A" />
+                            </linearGradient>
+                        </defs>
+                        <path
+                            d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z"
+                            fill="url(#cre8ve-grad-s8)"
+                        />
+                        <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                        <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="url(#cre8ve-grad-s8)" letter-spacing="-1">8</text>
+                        <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                        <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    </svg>
+                    <div class="flex space-x-4">
+                        <span class="px-4 py-1 rounded-full border border-white/20 text-gray-400 font-mono text-sm uppercase italic">Future Horizon</span>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="grid grid-cols-2 gap-12 flex-grow">
+                <div class="glass-panel p-12 flex flex-col h-full border-t-4 border-steelblue">
+                    <div class="flex items-center mb-8 space-x-4">
+                        <span class="px-4 py-1 rounded-full bg-steelblue/20 text-steelblue font-mono text-sm uppercase">Coming Soon</span>
+                        <h3 class="font-heading text-4xl font-bold text-white">Agentic Job Applying Engine</h3>
+                    </div>
+                    <p class="text-2xl text-gray-300 font-light mb-12 flex-grow leading-relaxed">
+                        The next step after optimization. An autonomous agent that tailors each application and submits to 50+ portals daily on your behalf—while you sleep.
+                    </p>
+                    <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
+                        <p class="text-xl text-white font-medium mb-2">The Scale Trap</p>
+                        <p class="text-gray-400">Closes the consumer loop by moving from "Preparation" to "Action."</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-12 flex flex-col h-full border-t-4 border-pumpkin">
+                    <div class="flex items-center mb-8 space-x-4">
+                        <span class="px-4 py-1 rounded-full bg-pumpkin/20 text-pumpkin font-mono text-sm uppercase">In Concept</span>
+                        <h3 class="font-heading text-4xl font-bold text-white">NEET / JEE Prep App</h3>
+                    </div>
+                    <p class="text-2xl text-gray-300 font-light mb-12 flex-grow leading-relaxed">
+                        Levelling the playing field for millions of Indian students. AI-powered preparation that combines adaptive learning with personalized coaching.
+                    </p>
+                    <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
+                        <p class="text-xl text-white font-medium mb-2">Democratic Access</p>
+                        <p class="text-gray-400">World-class prep for students in tier-2/3 towns where coaching is out of reach.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: THE TEAM - PRAYAGA -->
+    <div class="slide p-24">
+        <div class="glow-orange"></div>
+        <div class="bg-grid"></div>
+        <div class="content flex flex-col h-full">
+            <header class="flex justify-between items-center mb-16 border-b border-white/10 pb-8">
+                <h2 class="font-heading text-4xl font-bold tracking-tight text-white">08. <span class="text-gradient">Leadership</span></h2>
+                <svg
+                    height="40"
+                    viewBox="0 0 240 80"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="block"
+                >
+                    <defs>
+                        <linearGradient id="cre8ve-grad-s9" x1="0%" y1="0%" x2="50%" y2="100%">
+                            <stop offset="0%" stop-color="#4682B4" />
+                            <stop offset="60%" stop-color="#FF7A1A" />
+                            <stop offset="100%" stop-color="#FF7A1A" />
+                        </linearGradient>
+                    </defs>
+                    <path
+                        d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z"
+                        fill="url(#cre8ve-grad-s9)"
+                    />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+            <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="url(#cre8ve-grad-s9)" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </header>
+            
+            <div class="grid grid-cols-12 gap-16 flex-grow items-center">
+                <div class="col-span-4">
+                    <div class="aspect-[4/5] glass-panel flex flex-col items-center justify-center p-12 group overflow-hidden relative">
+                        <div class="absolute inset-0 bg-pumpkin/5 group-hover:bg-pumpkin/10 transition-colors"></div>
+                        <h3 class="font-heading text-[120px] font-bold text-pumpkin select-none">P</h3>
+                        <p class="font-heading text-3xl font-bold text-white mt-8">Prayaga</p>
+                        <p class="font-mono text-gray-500 uppercase tracking-widest text-sm mt-2">Director & CEO</p>
+                    </div>
+                </div>
+                <div class="col-span-8 flex flex-col justify-center">
+                    <div class="space-y-8">
+                        <h3 class="font-heading text-6xl font-bold text-white leading-tight">Translating strategy into <br/><span class="text-gradient">Human Connection.</span></h3>
+                        <div class="space-y-6 text-xl text-gray-300 font-light leading-relaxed">
+                            <p>
+                                With a decade of experience across branding, marketing, and business development, Prayaga has worked across India's most dynamic industries—from healthcare to celebrity influencers.
+                            </p>
+                            <p>
+                                At Neerozhukkil Vaidyasala and Saina Infotainments, she specialized in growing brands from the ground up and building new pathways for growth. Her core strength is translating complex strategy into something real and accessible.
+                            </p>
+                            <div class="p-8 bg-white/5 border border-white/10 rounded-2xl">
+                                <p class="text-white font-medium mb-2 uppercase select-none tracking-widest text-sm text-pumpkin">Visionary Objective</p>
+                                <p class="text-2xl text-white">"Ensure every product we build stays grounded in genuine human need."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: THE TEAM - INZA -->
+    <div class="slide p-24">
+        <div class="glow-blue left-0" style="left: auto; right: -200px;"></div>
+        <div class="bg-grid"></div>
+        <div class="content flex flex-col h-full">
+            <header class="flex justify-between items-center mb-16 border-b border-white/10 pb-8">
+                <h2 class="font-heading text-4xl font-bold tracking-tight text-white">09. <span class="text-gradient">Leadership</span></h2>
+                <svg
+                    height="40"
+                    viewBox="0 0 240 80"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="block"
+                >
+                    <defs>
+                        <linearGradient id="cre8ve-grad-s10" x1="0%" y1="0%" x2="50%" y2="100%">
+                            <stop offset="0%" stop-color="#4682B4" />
+                            <stop offset="60%" stop-color="#FF7A1A" />
+                            <stop offset="100%" stop-color="#FF7A1A" />
+                        </linearGradient>
+                    </defs>
+                    <path
+                        d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z"
+                        fill="url(#cre8ve-grad-s10)"
+                    />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+            <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="url(#cre8ve-grad-s10)" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </header>
+            
+            <div class="grid grid-cols-12 gap-16 flex-grow items-center">
+                <div class="col-span-8 flex flex-col justify-center order-2 md:order-1">
+                    <div class="space-y-8">
+                        <h3 class="font-heading text-6xl font-bold text-white leading-tight">Architecture built for <br/><span class="text-gradient">Hyper-Scale.</span></h3>
+                        <div class="space-y-6 text-xl text-gray-300 font-light leading-relaxed">
+                            <p>
+                                Operating at the frontier of Web3 and AI since 2016, Inza builds systems that don't just work—they scale globally. 
+                            </p>
+                            <p>
+                                Previously scaled <strong class="text-white">BXH to $1 Billion Market Cap</strong> and grew <strong class="text-white">Bytex.io to 500,000+ users</strong>. At Cre8ve, he oversees the engineering and operational backbone that makes our mission permanent.
+                            </p>
+                            <div class="p-8 bg-[#0A0A0A] border-l-4 border-steelblue rounded-r-2xl">
+                                <p class="text-gray-400 mb-4 font-mono text-sm uppercase tracking-widest">Team Dynamics</p>
+                                <p class="text-2xl text-white">
+                                    "Our entire tech, marketing and sales teams are handled entirely using AI."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-4 order-1 md:order-2">
+                    <div class="aspect-[4/5] glass-panel flex flex-col items-center justify-center p-12 group overflow-hidden relative">
+                        <div class="absolute inset-0 bg-steelblue/5 group-hover:bg-steelblue/10 transition-colors"></div>
+                        <h3 class="font-heading text-[120px] font-bold text-steelblue select-none">I</h3>
+                        <p class="font-heading text-3xl font-bold text-white mt-8">Inza</p>
+                        <p class="font-mono text-gray-500 uppercase tracking-widest text-sm mt-2">Co-founder, COO & CTO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: CTA -->
+    <div class="slide p-24 justify-center">
+        <div class="glow-orange"></div>
+        <div class="glow-blue"></div>
+        <div class="bg-grid"></div>
+        <div class="content flex flex-col h-full items-center justify-center text-center">
+            <h2 class="font-heading text-8xl font-bold text-white mb-10 tracking-tight">We're building AI for everyone.<br/><span class="text-gradient italic">Join us.</span></h2>
+            
+            <p class="text-3xl text-gray-400 font-light max-w-4xl mb-24 leading-relaxed">
+                Whether you're a job seeker, a student, or a partner who believes in what we're building — there's a place for you in the Cre8ve ecosystem.
+            </p>
+
+            <div class="grid grid-cols-2 gap-12 w-full max-w-5xl mb-24 text-left">
+                <div class="glass-panel px-10 py-12 flex flex-col justify-center bg-white/5">
+                    <p class="font-mono text-pumpkin uppercase tracking-widest text-sm mb-4">Get in touch</p>
+                    <p class="font-heading text-4xl font-bold text-white break-all">hello@cre8ve.xyz</p>
+                </div>
+                <div class="glass-panel px-10 py-12 flex flex-col justify-center bg-[#0A0A0A]">
+                    <p class="font-mono text-steelblue uppercase tracking-widest text-sm mb-4">Explore our platform</p>
+                    <p class="font-heading text-4xl font-bold text-white">cre8ve.xyz</p>
+                </div>
+            </div>
+
+            <div class="mt-auto pt-8 border-t border-white/10 w-full flex justify-between items-center text-gray-600 font-mono text-sm">
+                <div class="flex space-x-8">
+                    <span>Founded Kochi, India 2026</span>
+                </div>
+                <div class="flex items-center space-x-3 opacity-50">
+                    <svg
+                        height="20"
+                        viewBox="0 0 320 80"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="block"
+                    >
+                        <defs>
+                            <linearGradient id="cre8ve-grad-footer" x1="0%" y1="0%" x2="50%" y2="100%">
+                                <stop offset="0%" stop-color="#4682B4" />
+                                <stop offset="60%" stop-color="#FF7A1A" />
+                                <stop offset="100%" stop-color="#FF7A1A" />
+                            </linearGradient>
+                        </defs>
+                        <path
+                            d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z"
+                            fill="url(#cre8ve-grad-footer)"
+                        />
+                        <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                        <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                        <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="url(#cre8ve-grad-footer)" letter-spacing="-1">8</text>
+                        <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                        <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    </svg>
+                </div>
+                    <span>PRESENTATION v1.0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

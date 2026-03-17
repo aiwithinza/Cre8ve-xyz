@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cre8ve.xyz/sitemap.xml

@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cre8ve - Brand Book</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pumpkin: '#FF7A1A',
+                        steel: '#4682B4',
+                        black: '#000000',
+                        surface: '#060606',
+                    },
+                    fontFamily: {
+                        heading: ['"Space Grotesk"', 'sans-serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+        
+        /* 16:9 Slide Dimensions */
+        .slide {
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            position: relative;
+            background-color: #000000;
+            page-break-after: always;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #FF7A1A 0%, #4682B4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .bg-gradient-brand {
+            background: linear-gradient(135deg, #FF7A1A 0%, #4682B4 100%);
+        }
+
+        .glow-orange {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(ellipse at center, rgba(255,122,26,0.12) 0%, transparent 60%);
+            top: -200px;
+            right: -200px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .glow-blue {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(ellipse at center, rgba(70,130,180,0.1) 0%, transparent 60%);
+            bottom: -200px;
+            left: -200px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glass-panel {
+            background: rgba(6, 6, 6, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+            border-radius: 24px;
+        }
+        
+        .glass-thin {
+            background: rgba(255,255,255,0.02);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+        }
+
+        .bg-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+        }
+
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                margin: 0;
+                padding: 0;
+            }
+            .slide {
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+        }
+
+        @page {
+            size: 1920px 1080px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-white relative">
+
+    <!-- Slide 1: Cover -->
+    <div class="slide flex justify-center items-center relative">
+        <div class="glow-orange"></div>
+        <div class="glow-blue"></div>
+        <div class="bg-grid"></div>
+        
+        <div class="content flex flex-col items-center justify-center text-center space-y-12">
+            
+            <!-- Hero Logo -->
+            <div class="mb-8">
+                <svg width="640" height="160" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="block mx-auto">
+                    <defs>
+                        <linearGradient id="cre8ve-grad-global" x1="0%" y1="0%" x2="50%" y2="100%">
+                            <stop offset="0%" stop-color="#4682B4" />
+                            <stop offset="60%" stop-color="#FF7A1A" />
+                            <stop offset="100%" stop-color="#FF7A1A" />
+                        </linearGradient>
+                    </defs>
+                    <g transform="translate(54, 0)">
+                        <path d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z" fill="url(#cre8ve-grad-global)" />
+                        <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                        <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                        <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="#FF7A1A" letter-spacing="-1">8</text>
+                        <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                        <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    </g>
+                </svg>
+            </div>
+            
+            <h1 class="font-heading text-8xl font-bold tracking-tight mt-6">
+                Brand Book
+            </h1>
+            
+            <h2 class="font-mono text-pumpkin tracking-[0.4em] text-2xl uppercase mt-4">
+                Intelligence Engineered
+            </h2>
+
+            <div class="mt-16 pt-16 border-t border-white/10 w-1/3 text-center">
+                <p class="text-white/40 font-mono tracking-widest text-sm">VERSION 1.0 • MARCH 2026</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Slide 2: Positioning & Mission -->
+    <div class="slide p-24 relative">
+        <div class="glow-blue" style="top: 0; left: 0; bottom: auto; right: auto;"></div>
+        <div class="bg-grid"></div>
+        
+        <div class="content flex flex-col h-full w-full">
+            <div class="flex justify-between items-start mb-24 w-full">
+                <div class="flex items-center space-x-4">
+                    <span class="font-mono text-pumpkin font-bold text-xl">01.</span>
+                    <h2 class="font-heading text-3xl text-white/90 font-medium">Positioning</h2>
+                </div>
+                <!-- Standard Right Header Logo (150% scaled) -->
+                <svg width="204" height="51" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="block">
+                    <path d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z" fill="url(#cre8ve-grad-global)" />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="#FF7A1A" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-20">
+                <div class="flex flex-col space-y-12">
+                    <div>
+                        <h3 class="font-mono text-pumpkin tracking-widest text-sm mb-4">THE MISSION</h3>
+                        <p class="font-heading text-5xl leading-tight text-white font-light">
+                            We architect advanced neural systems and high-fidelity digital infrastructure for the next generation of global enterprises.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-mono text-pumpkin tracking-widest text-sm mb-4 mt-8">TARGET AUDIENCE</h3>
+                        <p class="text-2xl text-white/50 leading-relaxed font-light">
+                            CTOs, VP of Engineering, and digital transformation leads at enterprise-scale organizations who need production-grade AI systems—not prototypes dressed up as products.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="glass-panel p-12 flex flex-col space-y-8 h-full">
+                    <h3 class="font-mono text-white/40 tracking-widest text-sm mb-6 pb-6 border-b border-white/10">CORE VALUES</h3>
+                    
+                    <div class="flex flex-col space-y-8">
+                        <div>
+                            <h4 class="font-heading text-2xl text-white mb-2">Scale</h4>
+                            <p class="text-white/40 text-lg font-light">500+ AI models deployed, $2B+ data processed</p>
+                        </div>
+                        <div>
+                            <h4 class="font-heading text-2xl text-white mb-2">Reliability</h4>
+                            <p class="text-white/40 text-lg font-light">99.9% Uptime SLA — no caveats</p>
+                        </div>
+                        <div>
+                            <h4 class="font-heading text-2xl text-white mb-2">Intelligence</h4>
+                            <p class="text-white/40 text-lg font-light">Systems that reason, not just execute</p>
+                        </div>
+                        <div>
+                            <h4 class="font-heading text-2xl text-white mb-2">Precision</h4>
+                            <p class="text-white/40 text-lg font-light">Every pixel, every API call is deliberate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Logo System -->
+    <div class="slide p-24 relative">
+        <div class="glow-orange" style="bottom: -200px; right: -200px; top: auto; left: auto;"></div>
+        <div class="bg-grid"></div>
+        
+        <div class="content flex flex-col h-full w-full">
+            <div class="flex justify-between items-start mb-24 w-full">
+                <div class="flex items-center space-x-4">
+                    <span class="font-mono text-pumpkin font-bold text-xl">02.</span>
+                    <h2 class="font-heading text-3xl text-white/90 font-medium">Logo System</h2>
+                </div>
+                <svg width="204" height="51" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="block">
+                    <path d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z" fill="url(#cre8ve-grad-global)" />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="#FF7A1A" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </div>
+            
+            <div class="flex flex-col items-center justify-center space-y-20 flex-grow">
+                <!-- Primary Logo Construction -->
+                <div class="glass-panel p-20 w-3/4 flex flex-col items-center justify-center relative shadow-[0_0_60px_rgba(255,122,26,0.1)]">
+                    <h3 class="absolute top-8 left-8 font-mono text-white/30 tracking-widest text-sm">PRIMARY WORDMARK</h3>
+                    
+                    <svg width="400" height="100" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="block">
+                        <path d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z" fill="url(#cre8ve-grad-global)" />
+                        <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                        <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                        <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="#FF7A1A" letter-spacing="-1">8</text>
+                        <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                        <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    </svg>
+
+                    <div class="grid grid-cols-3 gap-12 w-full mt-16 pt-16 border-t border-white/10 text-center">
+                        <div>
+                            <h4 class="font-heading text-lg text-white mb-2">The Crescent "C"</h4>
+                            <p class="text-white/40 text-sm font-light">Signifies the cyclical nature of intelligence and acting as an opening gesture to listen.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-heading text-lg text-white mb-2">White Letterforms</h4>
+                            <p class="text-white/40 text-sm font-light">Pure `#FFFFFF` in Space Grotesk 500 w/ -1 tracking. Crisp and digital-native.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-heading text-lg text-white mb-2">The Numeral "8"</h4>
+                            <p class="text-white/40 text-sm font-light">Symbol of scale and infinity in Pumpkin Hex `#FF7A1A` at size 48px to anchor the mark.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Color System -->
+    <div class="slide p-24 relative">
+        <div class="glow-blue" style="top: 0; right: 0; bottom: auto; left: auto;"></div>
+        <div class="bg-grid"></div>
+        
+        <div class="content flex flex-col h-full w-full">
+            <div class="flex justify-between items-start mb-20 w-full">
+                <div class="flex items-center space-x-4">
+                    <span class="font-mono text-pumpkin font-bold text-xl">03.</span>
+                    <h2 class="font-heading text-3xl text-white/90 font-medium">Color Palette</h2>
+                </div>
+                <svg width="204" height="51" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="block">
+                    <path d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z" fill="url(#cre8ve-grad-global)" />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="#FF7A1A" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </div>
+            
+            <div class="grid grid-cols-4 gap-8 mb-16">
+                <!-- Pumpkin -->
+                <div class="flex flex-col">
+                    <div class="h-64 rounded-3xl w-full bg-pumpkin shadow-[0_0_40px_rgba(255,122,26,0.3)] mb-6"></div>
+                    <h3 class="font-heading text-2xl text-white mb-2">Pumpkin Orange</h3>
+                    <p class="font-mono text-white/40 text-sm mb-1">HEX: #FF7A1A</p>
+                    <p class="font-mono text-white/40 text-sm mb-4">RGB: 255, 122, 26</p>
+                    <p class="text-white/60 text-sm font-light leading-relaxed">Primary accent — CTAs, glows, active states, selection highlights.</p>
+                </div>
+                
+                <!-- Steel -->
+                <div class="flex flex-col">
+                    <div class="h-64 rounded-3xl w-full bg-steel shadow-[0_0_40px_rgba(70,130,180,0.3)] mb-6"></div>
+                    <h3 class="font-heading text-2xl text-white mb-2">Steel Blue</h3>
+                    <p class="font-mono text-white/40 text-sm mb-1">HEX: #4682B4</p>
+                    <p class="font-mono text-white/40 text-sm mb-4">RGB: 70, 130, 180</p>
+                    <p class="text-white/60 text-sm font-light leading-relaxed">Secondary accent — gradient anchor, cool balance against pumpkin.</p>
+                </div>
+
+                <!-- Pure White -->
+                <div class="flex flex-col">
+                    <div class="h-64 rounded-3xl w-full bg-white mb-6"></div>
+                    <h3 class="font-heading text-2xl text-white mb-2">Pure White</h3>
+                    <p class="font-mono text-white/40 text-sm mb-1">HEX: #FFFFFF</p>
+                    <p class="font-mono text-white/40 text-sm mb-4">RGB: 255, 255, 255</p>
+                    <p class="text-white/60 text-sm font-light leading-relaxed">Body text, wordmark letterforms, UI copy (with strategic opacities).</p>
+                </div>
+
+                <!-- Deep Black -->
+                <div class="flex flex-col">
+                    <div class="h-64 rounded-3xl w-full bg-surface border border-white/10 mb-6"></div>
+                    <h3 class="font-heading text-2xl text-white mb-2">Deep Black</h3>
+                    <p class="font-mono text-white/40 text-sm mb-1">HEX: #060606</p>
+                    <p class="font-mono text-white/40 text-sm mb-4">RGB: 6, 6, 6</p>
+                    <p class="text-white/60 text-sm font-light leading-relaxed">Card surfaces. Set against a Pure Black (#000000) master background.</p>
+                </div>
+            </div>
+
+            <!-- Gradient System -->
+            <div class="glass-thin p-10 flex space-x-12 mt-auto border border-white/10">
+                <div class="w-1/3">
+                    <h3 class="font-mono text-pumpkin tracking-widest text-sm mb-4 uppercase">Master Gradient</h3>
+                    <div class="h-16 w-full rounded-2xl bg-gradient-brand"></div>
+                </div>
+                <div class="w-2/3 flex flex-col justify-center">
+                    <h4 class="font-heading text-xl text-white mb-2">Orange → Steel</h4>
+                    <p class="text-white/50 text-base font-light">Linear Gradient: `135deg, #FF7A1A 0%, #4682B4 100%`<br/>Used for CTA buttons, highlighted gradient text, and hover borders.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Typography -->
+    <div class="slide p-24 relative">
+        <div class="glow-orange" style="top: -200px; left: -200px;"></div>
+        <div class="bg-grid"></div>
+        
+        <div class="content flex flex-col h-full w-full">
+            <div class="flex justify-between items-start mb-24 w-full">
+                <div class="flex items-center space-x-4">
+                    <span class="font-mono text-pumpkin font-bold text-xl">04.</span>
+                    <h2 class="font-heading text-3xl text-white/90 font-medium">Typography</h2>
+                </div>
+                <svg width="204" height="51" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="block">
+                    <path d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z" fill="url(#cre8ve-grad-global)" />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="#FF7A1A" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-24 flex-grow">
+                <div class="flex flex-col space-y-20">
+                    <!-- Heading Font -->
+                    <div>
+                        <div class="flex items-end space-x-4 mb-6">
+                            <h3 class="font-heading text-8xl text-white font-bold tracking-tight leading-none">Aa</h3>
+                            <h4 class="font-heading text-3xl text-white/60 mb-1">Space Grotesk</h4>
+                        </div>
+                        <p class="text-white/40 text-lg font-light max-w-md">Geometric, architectural, and modern. Reserved strictly for primary display headings and UI component titles.</p>
+                        <div class="mt-6 p-4 rounded-xl border border-white/10 bg-white/5 inline-block">
+                            <p class="font-heading text-3xl font-bold text-white tracking-[0]">AI SYSTEMS AT SCALE.</p>
+                        </div>
+                    </div>
+
+                    <!-- Body Font -->
+                    <div>
+                        <div class="flex items-end space-x-4 mb-6">
+                            <h3 class="font-sans text-8xl text-white font-light tracking-tight leading-none">Aa</h3>
+                            <h4 class="font-heading text-3xl text-white/60 mb-2">Inter</h4>
+                        </div>
+                        <p class="text-white/40 text-lg font-light max-w-md">Neutral, highly legible, screen-optimized. The backbone of all body copy and prose descriptions.</p>
+                        <div class="mt-6 p-4 rounded-xl border border-white/10 bg-white/5 inline-block">
+                            <p class="font-sans text-xl font-light text-white/70">We architect advanced neural systems.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col">
+                    <!-- Mono Font -->
+                    <div class="mb-20">
+                        <div class="flex items-end space-x-4 mb-6">
+                            <h3 class="font-mono text-8xl text-white font-medium tracking-tight leading-none">Aa</h3>
+                            <h4 class="font-heading text-3xl text-white/60 mb-2">JetBrains Mono</h4>
+                        </div>
+                        <p class="text-white/40 text-lg font-light max-w-md">Monospace, code-native precision. Used for the machine layer: metrics, tags, system labels, and code blocks.</p>
+                        <div class="mt-6 p-4 rounded-xl border border-white/10 bg-white/5 inline-block">
+                            <p class="font-mono text-sm tracking-widest text-pumpkin uppercase">INTELLIGENCE ENGINEERED</p>
+                        </div>
+                    </div>
+
+                    <!-- Opacity Rules -->
+                    <div class="glass-panel p-10 mt-auto">
+                        <h3 class="font-mono text-white/40 tracking-widest text-sm mb-6 border-b border-white/10 pb-4">OPACITY HIERARCHY</h3>
+                        <div class="space-y-4 font-mono text-xs">
+                            <div class="flex justify-between items-center"><span class="text-white/95">text-white/95</span> <span class="text-white/40">Hero display text / main focus</span></div>
+                            <div class="flex justify-between items-center"><span class="text-white/70">text-white/70</span> <span class="text-white/40">Input placeholders</span></div>
+                            <div class="flex justify-between items-center"><span class="text-white/40">text-white/40</span> <span class="text-white/40">Default body copy</span></div>
+                            <div class="flex justify-between items-center"><span class="text-white/20">text-white/20</span> <span class="text-white/40">Muted text, testimonies</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Iconography & UI Elements -->
+    <div class="slide p-24 relative">
+        <div class="glow-blue" style="bottom: -100px; right: -100px; top: auto; left: auto;"></div>
+        <div class="bg-grid"></div>
+        
+        <div class="content flex flex-col h-full w-full">
+            <div class="flex justify-between items-start mb-16 w-full">
+                <div class="flex items-center space-x-4">
+                    <span class="font-mono text-pumpkin font-bold text-xl">05.</span>
+                    <h2 class="font-heading text-3xl text-white/90 font-medium">UI Language</h2>
+                </div>
+                <svg width="204" height="51" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="block">
+                    <path d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z" fill="url(#cre8ve-grad-global)" />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="#FF7A1A" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-16 flex-grow">
+                <!-- Buttons & Badges -->
+                <div class="flex flex-col space-y-12">
+                    <div class="glass-panel p-10 flex flex-col space-y-8">
+                        <h3 class="font-mono text-white/40 tracking-widest text-sm line-clamp-1 border-b border-white/10 pb-4">BUTTON SYSTEM</h3>
+                        <div class="flex items-center space-x-8">
+                            <button class="px-12 py-5 bg-gradient-brand text-white font-medium rounded-full tracking-[0.2em] text-sm shadow-[0_20px_60px_rgba(255,122,26,0.2)]">
+                                START A PROJECT
+                            </button>
+                            <button class="px-12 py-5 border border-white/20 text-white/60 font-medium rounded-full tracking-[0.2em] text-sm bg-black">
+                                VIEW CAPABILITIES
+                            </button>
+                        </div>
+                        <p class="text-sm text-white/40 font-light mt-4">Primary buttons use the Master Gradient with intense drop shadows. Secondary buttons use ghost styling.</p>
+                    </div>
+
+                    <div class="glass-panel p-10 flex flex-col space-y-8">
+                        <h3 class="font-mono text-white/40 tracking-widest text-sm line-clamp-1 border-b border-white/10 pb-4">BADGES & TAGS</h3>
+                        <div class="flex items-center space-x-6">
+                            <div class="inline-flex items-center space-x-3 border border-brand/30 rounded-full px-5 py-2 w-max bg-brand/10">
+                                <span class="w-2 h-2 rounded-full bg-pumpkin"></span>
+                                <span class="font-mono text-pumpkin tracking-[0.4em] text-[10px] uppercase">Live Badge</span>
+                            </div>
+                            <div class="inline-flex items-center border border-white/10 rounded-full px-4 py-1.5 w-max bg-white/5">
+                                <span class="font-mono text-white/50 tracking-[0.2em] text-[10px] uppercase">UI Tag</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glass Cards -->
+                <div class="flex flex-col flex-grow">
+                    <div class="glass-morphism p-12 rounded-3xl flex-grow flex flex-col relative border border-white/10 bg-[#060606]/60 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+                        <h3 class="font-mono text-white/40 tracking-widest text-sm line-clamp-1 border-b border-white/10 pb-4 mb-8">GLASSMORPHISM COMPONENTS</h3>
+                        
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="w-16 h-16 rounded-2xl bg-brand/10 border border-brand/20 flex items-center justify-center text-pumpkin">
+                                <!-- Lucide Network Icon approximation -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>
+                            </div>
+                            <span class="font-mono text-4xl text-brand/20">01</span>
+                        </div>
+                        
+                        <h4 class="font-heading text-3xl text-white/90 font-medium mb-4">Infrastructure</h4>
+                        <p class="text-white/40 font-light text-base leading-relaxed mb-8 flex-grow">Scalable, fault-tolerant cloud-native environments built for heavy GPU-intensive compute.</p>
+                        
+                        <div class="flex flex-wrap gap-2 mt-auto text-xs font-mono tracking-widest">
+                            <span class="px-3 py-1.5 rounded-full border border-brand/20 bg-brand/5 text-brand/50">AWS</span>
+                            <span class="px-3 py-1.5 rounded-full border border-brand/20 bg-brand/5 text-brand/50">KUBERNETES</span>
+                        </div>
+
+                        <!-- Hover UI Simulation -->
+                        <div class="absolute bottom-12 right-12 w-32 h-32 bg-pumpkin/20 rounded-full blur-[40px] pointer-events-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Iconography & Motion -->
+    <div class="slide p-24 relative">
+        <div class="glow-orange" style="top: -100px; right: -100px; bottom: auto; left: auto;"></div>
+        <div class="bg-grid"></div>
+        
+        <div class="content flex flex-col h-full w-full">
+            <div class="flex justify-between items-start mb-16 w-full">
+                <div class="flex items-center space-x-4">
+                    <span class="font-mono text-pumpkin font-bold text-xl">06.</span>
+                    <h2 class="font-heading text-3xl text-white/90 font-medium">Iconography & Motion</h2>
+                </div>
+                <svg width="204" height="51" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="block">
+                    <path d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z" fill="url(#cre8ve-grad-global)" />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="#FF7A1A" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-16 flex-grow">
+                <!-- Iconography -->
+                <div class="flex flex-col space-y-12">
+                    <div class="glass-panel p-10 flex flex-col space-y-8 h-full">
+                        <h3 class="font-mono text-white/40 tracking-widest text-sm border-b border-white/10 pb-4">LUCIDE CORE ICONS</h3>
+                        <p class="text-white/60 font-light text-lg leading-relaxed">System icons utilize Lucide Core with strict geometric rules. No fill vectors. Stroke-only, technical, sharp.</p>
+                        <div class="grid grid-cols-4 gap-6 mt-8">
+                            <div class="flex flex-col items-center">
+                                <div class="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/80 mb-4"><i data-lucide="cpu" class="w-8 h-8 stroke-[1.5]"></i></div>
+                                <span class="font-mono text-[10px] text-white/40 tracking-widest uppercase">CPU</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/80 mb-4"><i data-lucide="network" class="w-8 h-8 stroke-[1.5]"></i></div>
+                                <span class="font-mono text-[10px] text-white/40 tracking-widest uppercase">Network</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/80 mb-4"><i data-lucide="database" class="w-8 h-8 stroke-[1.5]"></i></div>
+                                <span class="font-mono text-[10px] text-white/40 tracking-widest uppercase">Database</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/80 mb-4"><i data-lucide="shield" class="w-8 h-8 stroke-[1.5]"></i></div>
+                                <span class="font-mono text-[10px] text-white/40 tracking-widest uppercase">Shield</span>
+                            </div>
+                        </div>
+                        <p class="font-mono text-xs text-brand/60 tracking-widest mt-auto border-t border-white/10 pt-4">STROKE_WIDTH: 1.5px | ACTIVE_STATE: #FF7A1A</p>
+                    </div>
+                </div>
+
+                <!-- Motion -->
+                <div class="flex flex-col flex-grow">
+                    <div class="glass-thin p-10 flex flex-col space-y-8 flex-grow border border-white/10">
+                        <h3 class="font-mono text-white/40 tracking-widest text-sm border-b border-white/10 pb-4">MOTION LANGUAGE</h3>
+                        <p class="text-white/60 font-light text-lg leading-relaxed mb-6">Animation is functional, never decorative, reinforcing the "intelligence" metaphor. Uses Framer Motion.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="p-6 bg-black/40 rounded-xl border border-white/5">
+                                <h4 class="font-heading text-xl text-white mb-2">The Glow Pulse</h4>
+                                <p class="text-white/40 text-sm font-light">Subtle ambient breathing behind hero statements and cards. Simulates machine heartbeat.</p>
+                                <p class="font-mono text-pumpkin/60 text-xs mt-3 bg-brand/10 p-3 rounded">animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.6, 0.3] }}<br>transition={{ duration: 12, repeat: Infinity }}</p>
+                            </div>
+                            
+                            <div class="p-6 bg-black/40 rounded-xl border border-white/5">
+                                <h4 class="font-heading text-xl text-white mb-2">Cinematic Entrance</h4>
+                                <p class="text-white/40 text-sm font-light">Text and sections fade up with authority. Never springy, never bouncy. 60fps.</p>
+                                <p class="font-mono text-steel/60 text-xs mt-3 bg-steel/10 p-3 rounded">y: 30 -> 0, duration: 0.8s, ease: [0.16, 1, 0.3, 1]</p>
+                            </div>
+                            
+                            <div class="p-6 bg-black/40 rounded-xl border border-white/5">
+                                <h4 class="font-heading text-xl text-white mb-2">Card Hover</h4>
+                                <p class="text-white/40 text-sm font-light">Magnetic lift and neon shadow reveal.</p>
+                                <p class="font-mono text-white/40 text-xs mt-3 bg-white/5 p-3 rounded">whileHover={{ y: -6, scale: 1.015 }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Voice & Tone -->
+    <div class="slide p-24 relative">
+        <div class="glow-blue" style="top: -100px; left: -100px; bottom: auto; right: auto;"></div>
+        <div class="bg-grid"></div>
+        
+        <div class="content flex flex-col h-full w-full">
+            <div class="flex justify-between items-start mb-16 w-full">
+                <div class="flex items-center space-x-4">
+                    <span class="font-mono text-pumpkin font-bold text-xl">07.</span>
+                    <h2 class="font-heading text-3xl text-white/90 font-medium">Voice & Tone</h2>
+                </div>
+                <svg width="204" height="51" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="block">
+                    <path d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z" fill="url(#cre8ve-grad-global)" />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="#FF7A1A" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-16 flex-grow">
+                <div class="flex flex-col space-y-12">
+                    <!-- Brand Voice Pillars -->
+                    <div class="glass-panel p-10 flex flex-col space-y-8 h-full">
+                        <h3 class="font-mono text-white/40 tracking-widest text-sm border-b border-white/10 pb-4">BRAND VOICE PILLARS</h3>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <h4 class="font-heading text-2xl text-white mb-2">1. Declarative Authority</h4>
+                                <p class="text-white/60 text-lg font-light">We make statements. We do not ask questions, use hedges, or build up to a point. Every sentence lands.</p>
+                                <div class="mt-4 p-4 rounded-xl border border-white/10 bg-white/5 flex gap-4 text-sm font-light">
+                                    <span class="text-green-400">✓ AI SYSTEMS AT SCALE.</span>
+                                    <span class="text-red-400 opacity-50">✗ We help companies scale their AI.</span>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-heading text-2xl text-white mb-2">2. Cinematic Scale</h4>
+                                <p class="text-white/60 text-lg font-light">We frame everything at maximum scope: global, enterprise, next generation. This is not vanity — it is a signal to the right audience.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-heading text-2xl text-white mb-2">3. Quiet Confidence</h4>
+                                <p class="text-white/60 text-lg font-light">We do not hype. Social proof is metric-based, not superlative.</p>
+                                <div class="mt-4 p-4 rounded-xl border border-white/10 bg-white/5 flex gap-4 text-sm font-light">
+                                    <span class="text-green-400">✓ 99.9% Uptime SLA. $2B+ Data Processed.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand vocabulary / Social Proof -->
+                <div class="flex flex-col space-y-8">
+                    <div class="glass-thin p-10 border border-white/10">
+                        <h3 class="font-mono text-white/40 tracking-widest text-sm border-b border-white/10 pb-4 mb-6">BRAND VOCABULARY</h3>
+                        <div class="grid grid-cols-2 gap-x-8 gap-y-4 text-sm">
+                            <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-white">Architect</span> <span class="text-red-400/50">Build / Make</span></div>
+                            <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-white">Neural systems</span> <span class="text-red-400/50">AI tools</span></div>
+                            <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-white">Infrastructure</span> <span class="text-red-400/50">Backend</span></div>
+                            <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-white">Autonomous</span> <span class="text-red-400/50">Automated / Smart</span></div>
+                            <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-white">Enterprise</span> <span class="text-red-400/50">Business / Client</span></div>
+                            <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-white">High-fidelity</span> <span class="text-red-400/50">High-quality</span></div>
+                        </div>
+                    </div>
+
+                    <div class="glass-thin p-10 border border-white/10 flex-grow">
+                        <h3 class="font-mono text-white/40 tracking-widest text-sm border-b border-white/10 pb-4 mb-6">SOCIAL PROOF FORMATTING</h3>
+                        <p class="text-white/60 font-light mb-6">Numbers are social proof, not bragging. Always pair a metric with what it measures. Rendered in monospace.</p>
+                        
+                        <div class="space-y-4 font-mono text-sm">
+                            <div class="flex items-center space-x-4">
+                                <span class="text-white/50 w-24 text-right">500+</span>
+                                <span class="text-white/10">/</span>
+                                <span class="text-white/20 uppercase">AI Models Deployed</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="text-white/50 w-24 text-right">99.9%</span>
+                                <span class="text-white/10">/</span>
+                                <span class="text-white/20 uppercase">Uptime SLA</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="text-white/50 w-24 text-right">$2B+</span>
+                                <span class="text-white/10">/</span>
+                                <span class="text-white/20 uppercase">Data Processed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Messaging Architecture -->
+    <div class="slide p-24 relative">
+        <div class="glow-orange" style="bottom: -100px; right: -100px; top: auto; left: auto;"></div>
+        <div class="bg-grid"></div>
+        
+        <div class="content flex flex-col h-full w-full">
+            <div class="flex justify-between items-start mb-16 w-full">
+                <div class="flex items-center space-x-4">
+                    <span class="font-mono text-pumpkin font-bold text-xl">08.</span>
+                    <h2 class="font-heading text-3xl text-white/90 font-medium">Messaging Architecture</h2>
+                </div>
+                <svg width="204" height="51" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="block">
+                    <path d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z" fill="url(#cre8ve-grad-global)" />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="#FF7A1A" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </div>
+            
+            <div class="flex flex-col space-y-12 flex-grow">
+                <div class="glass-panel p-12 w-full">
+                    <h3 class="font-mono text-white/40 tracking-widest text-sm border-b border-white/10 pb-4 mb-8">TAGLINE HIERARCHY</h3>
+                    <div class="grid grid-cols-2 gap-12">
+                        <div>
+                            <p class="font-mono text-[11px] text-pumpkin tracking-widest uppercase mb-1">Hero Badge</p>
+                            <p class="text-xl text-white font-medium">Intelligence Engineered</p>
+                        </div>
+                        <div>
+                            <p class="font-mono text-[11px] text-brand tracking-widest uppercase mb-1">CTA Headline</p>
+                            <p class="text-xl text-white font-medium">LET'S ARCHITECT THE FUTURE.</p>
+                        </div>
+                        <div class="col-span-2 border-t border-white/5 pt-6 mt-2">
+                            <p class="font-mono text-[11px] text-white/30 tracking-widest uppercase mb-2">Hero Headline</p>
+                            <p class="text-5xl font-heading text-white font-bold tracking-tight">AI SYSTEMS AT SCALE.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-8 flex-grow">
+                    <!-- Concept 1 -->
+                    <div class="glass-thin p-10 border border-white/10 flex flex-col">
+                        <span class="font-mono text-3xl text-white/10 mb-6">01</span>
+                        <h4 class="font-heading text-2xl text-white mb-4">AI Agents</h4>
+                        <p class="text-white/50 text-base font-light leading-relaxed">Autonomous entities designed to execute complex, multi-stage reasoning and task completion.</p>
+                        <div class="mt-auto pt-8 flex gap-2">
+                            <span class="px-2 py-1 text-[10px] font-mono tracking-widest border border-brand/20 rounded text-brand/60 uppercase">LLM</span>
+                            <span class="px-2 py-1 text-[10px] font-mono tracking-widest border border-brand/20 rounded text-brand/60 uppercase">RAG</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Concept 2 -->
+                    <div class="glass-thin p-10 border border-white/10 flex flex-col">
+                        <span class="font-mono text-3xl text-white/10 mb-6">02</span>
+                        <h4 class="font-heading text-2xl text-white mb-4">Infrastructure</h4>
+                        <p class="text-white/50 text-base font-light leading-relaxed">Scalable, fault-tolerant cloud-native environments built for heavy GPU-intensive compute.</p>
+                        <div class="mt-auto pt-8 flex gap-2">
+                            <span class="px-2 py-1 text-[10px] font-mono tracking-widest border border-brand/20 rounded text-brand/60 uppercase">AWS</span>
+                            <span class="px-2 py-1 text-[10px] font-mono tracking-widest border border-brand/20 rounded text-brand/60 uppercase">KUBERNETES</span>
+                        </div>
+                    </div>
+
+                    <!-- Concept 3 -->
+                    <div class="glass-thin p-10 border border-white/10 flex flex-col">
+                        <span class="font-mono text-3xl text-white/10 mb-6">03</span>
+                        <h4 class="font-heading text-2xl text-white mb-4">Interfaces</h4>
+                        <p class="text-white/50 text-base font-light leading-relaxed">Minimalistic, hyper-intuitive control planes for seamless human-machine collaboration.</p>
+                        <div class="mt-auto pt-8 flex gap-2">
+                            <span class="px-2 py-1 text-[10px] font-mono tracking-widest border border-brand/20 rounded text-brand/60 uppercase">DASHBOARDS</span>
+                            <span class="px-2 py-1 text-[10px] font-mono tracking-widest border border-brand/20 rounded text-brand/60 uppercase">CLI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Digital Presence & Layout -->
+    <div class="slide p-24 relative">
+        <div class="glow-blue" style="top: 0; right: 0; left: auto; bottom: auto;"></div>
+        <div class="bg-grid"></div>
+        
+        <div class="content flex flex-col h-full w-full">
+            <div class="flex justify-between items-start mb-16 w-full">
+                <div class="flex items-center space-x-4">
+                    <span class="font-mono text-pumpkin font-bold text-xl">09.</span>
+                    <h2 class="font-heading text-3xl text-white/90 font-medium">Digital Presence & Layout</h2>
+                </div>
+                <svg width="204" height="51" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="block">
+                    <path d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z" fill="url(#cre8ve-grad-global)" />
+                    <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+                    <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                    <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="#FF7A1A" letter-spacing="-1">8</text>
+                    <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+                    <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+                </svg>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-16 h-full">
+                <div class="flex flex-col space-y-12">
+                    <div class="glass-panel p-10 flex flex-col space-y-8 flex-grow">
+                        <h3 class="font-mono text-white/40 tracking-widest text-sm border-b border-white/10 pb-4">LAYOUT CONSTRAINTS</h3>
+                        
+                        <div class="space-y-8 mt-4">
+                            <div>
+                                <h4 class="font-heading text-lg text-white mb-2">Content Widths</h4>
+                                <ul class="space-y-3 font-mono text-sm text-white/50">
+                                    <li>max-w-6xl (1152px) <span class="text-white/20">→ Centered text sections</span></li>
+                                    <li>max-w-7xl (1280px) <span class="text-white/20">→ Full-bleed grids</span></li>
+                                    <li>max-w-2xl (672px) <span class="text-white/20">→ Body prose limit</span></li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-heading text-lg text-white mb-2">Spacing Rhythm</h4>
+                                <ul class="space-y-3 font-mono text-sm text-white/50">
+                                    <li>Horizontal padding <span class="text-white/20">→ 24px (px-6)</span></li>
+                                    <li>Section gap (Mobile) <span class="text-white/20">→ 96px (py-24)</span></li>
+                                    <li>Section gap (Desktop) <span class="text-white/20">→ 160px (py-40)</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col space-y-8">
+                    <div class="glass-thin p-10 border border-white/10 flex-grow">
+                        <h3 class="font-mono text-white/40 tracking-widest text-sm border-b border-white/10 pb-4 mb-6">PAGE STRUCTURE</h3>
+                        <p class="text-white/60 font-light mb-6 leading-relaxed">The public website is restricted to four sections in strict sequence. This structure is intentional. No section shall be added without explicit strategic justification.</p>
+                        
+                        <div class="flex flex-col gap-4 mt-8">
+                            <div class="flex items-center gap-6 p-4 bg-white/5 border border-white/10 rounded-xl">
+                                <span class="font-mono text-brand font-bold">1</span>
+                                <span class="font-heading text-xl text-white/90">Hero</span>
+                                <span class="text-white/40 text-sm font-light">Brand statement, terminal, social proof.</span>
+                            </div>
+                            <div class="flex items-center gap-6 p-4 bg-white/5 border border-white/10 rounded-xl">
+                                <span class="font-mono text-brand font-bold">2</span>
+                                <span class="font-heading text-xl text-white/90">Capabilities</span>
+                                <span class="text-white/40 text-sm font-light">Six-pillar bento grid layout.</span>
+                            </div>
+                            <div class="flex items-center gap-6 p-4 bg-white/5 border border-white/10 rounded-xl">
+                                <span class="font-mono text-brand font-bold">3</span>
+                                <span class="font-heading text-xl text-white/90">Architecture</span>
+                                <span class="text-white/40 text-sm font-light">Neural system topology diagram.</span>
+                            </div>
+                            <div class="flex items-center gap-6 p-4 bg-white/5 border border-white/10 rounded-xl">
+                                <span class="font-mono text-brand font-bold">4</span>
+                                <span class="font-heading text-xl text-white/90">Conversion</span>
+                                <span class="text-white/40 text-sm font-light">Testimonial, headline, email capture.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Init Lucide Core Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
