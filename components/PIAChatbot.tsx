@@ -84,14 +84,22 @@ export default function PIAChatbot() {
     setInput('')
 
     switch (step) {
-      case 'name':
+      case 'name': {
         addMessage('user', value)
+        const greetings = /^(hi|hey|hello|hola|sup|yo|hii+|heyy+|what'?s?\s*up|howdy|greetings|good\s*(morning|afternoon|evening))[\s!.,]*$/i
+        if (greetings.test(value)) {
+          setTimeout(() => {
+            addMessage('pia', `Hey there! 👋 What's your name?`)
+          }, 500)
+          return
+        }
         setData(prev => ({ ...prev, name: value }))
         setTimeout(() => {
           addMessage('pia', `Nice to meet you, ${value}! What's your email so we can reach you?`)
           setStep('email')
         }, 500)
         break
+      }
 
       case 'email':
         if (!validateEmail(value)) {
