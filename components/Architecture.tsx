@@ -114,9 +114,9 @@ function PeripheralNode({ node, delay }: { node: typeof peripherals[0]; delay: n
     >
       <motion.div
         whileHover={{ scale: 1.08 }}
-        className="relative flex flex-col items-center gap-2 md:gap-3 rounded-2xl glass-morphism px-5 py-4 md:px-8 md:py-6 border-white/15 transition-all duration-500 hover:shadow-[0_0_50px_rgba(255,122,26,0.25)] hover:border-brand/40"
+        className="relative flex flex-col items-center gap-1.5 md:gap-3 rounded-2xl glass-morphism px-3 py-3 md:px-8 md:py-6 border-white/15 transition-all duration-500 hover:shadow-[0_0_50px_rgba(255,122,26,0.25)] hover:border-brand/40"
       >
-        <Icon className="w-5 h-5 md:w-6 md:h-6 text-brand" strokeWidth={1.2} />
+        <Icon className="w-4 h-4 md:w-6 md:h-6 text-brand" strokeWidth={1.2} />
         <span className="font-mono text-[8px] md:text-[11px] tracking-[0.2em] text-white/80">
           {node.label}
         </span>
@@ -168,13 +168,13 @@ export default function Architecture() {
             {/* Center column: vertical line top + center node + vertical line bottom */}
             <div className="flex flex-col items-center">
               {/* Top vertical line */}
-              <div className="w-5 h-16 md:h-20">
+              <div className="w-5 h-10 md:h-20">
                 <ConnectionLine direction="vertical" protocol="API" index={0} />
               </div>
 
               {/* Center row: left line + orchestration + right line */}
               <div className="flex items-center">
-                <div className="h-5 w-16 md:w-20">
+                <div className="h-5 w-8 md:w-20">
                   <ConnectionLine direction="horizontal" protocol="STREAM" index={1} />
                 </div>
 
@@ -188,10 +188,10 @@ export default function Architecture() {
                 >
                   <motion.div
                     whileHover={{ scale: 1.05 }}
-                    className="relative flex flex-col items-center justify-center gap-2 w-28 h-28 md:w-40 md:h-40 rounded-full glass-morphism border-brand/40 bg-brand/[0.06] shadow-[0_0_100px_rgba(255,122,26,0.25)] transition-all duration-500 hover:shadow-[0_0_140px_rgba(255,122,26,0.4)]"
+                    className="relative flex flex-col items-center justify-center gap-1.5 md:gap-2 w-24 h-24 md:w-40 md:h-40 rounded-full glass-morphism border-brand/40 bg-brand/[0.06] shadow-[0_0_100px_rgba(255,122,26,0.25)] transition-all duration-500 hover:shadow-[0_0_140px_rgba(255,122,26,0.4)]"
                   >
-                    <Workflow className="w-7 h-7 md:w-9 md:h-9 text-brand" strokeWidth={1.2} />
-                    <span className="font-mono text-[7px] md:text-[11px] font-bold text-brand tracking-[0.25em]">
+                    <Workflow className="w-6 h-6 md:w-9 md:h-9 text-brand" strokeWidth={1.2} />
+                    <span className="font-mono text-[6px] md:text-[11px] font-bold text-brand tracking-[0.15em] md:tracking-[0.25em]">
                       ORCHESTRATION
                     </span>
                     <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-brand animate-pulse" />
@@ -209,13 +209,13 @@ export default function Architecture() {
                   />
                 </motion.div>
 
-                <div className="h-5 w-16 md:w-20">
+                <div className="h-5 w-8 md:w-20">
                   <ConnectionLine direction="horizontal" protocol="gRPC" index={2} />
                 </div>
               </div>
 
               {/* Bottom vertical line */}
-              <div className="w-5 h-16 md:h-20">
+              <div className="w-5 h-10 md:h-20">
                 <ConnectionLine direction="vertical" protocol="EVENTS" index={3} />
               </div>
             </div>
