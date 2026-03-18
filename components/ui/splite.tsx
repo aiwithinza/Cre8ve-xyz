@@ -11,9 +11,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
   const [canRender3D, setCanRender3D] = useState(false)
 
   useEffect(() => {
-    const isDesktop = window.innerWidth >= 768
-    const hasPower = navigator.hardwareConcurrency > 4
-    setCanRender3D(isDesktop && hasPower)
+    setCanRender3D(true)
   }, [])
 
   if (!canRender3D) {
