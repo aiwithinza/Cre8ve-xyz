@@ -35,7 +35,10 @@
       "WebFetch(domain:www.kriraai.com)",
       "Bash(grep -n \"href.*work\\\\|/work\" /Users/cre8ve/Cre8ve.xyz/components/*.tsx /Users/cre8ve/Cre8ve.xyz/pages/*.tsx)",
       "Bash(ls /Users/cre8ve/Cre8ve.xyz/.env*)",
-      "Bash(grep -l \"glass-morphism\\\\|team\\\\|founder\" /Users/cre8ve/Cre8ve.xyz/styles/*.css)"
+      "Bash(grep -l \"glass-morphism\\\\|team\\\\|founder\" /Users/cre8ve/Cre8ve.xyz/styles/*.css)",
+      "Bash(vercel --version)",
+      "Bash(gh auth status)",
+      "Bash(git add -A)"
     ],
     "additionalDirectories": [
       "/Users/cre8ve/.claude",
