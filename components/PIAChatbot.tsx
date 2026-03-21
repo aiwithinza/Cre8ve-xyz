@@ -210,7 +210,7 @@ export default function PIAChatbot() {
 
     setSubmitting(false)
     setTimeout(() => {
-      addMessage('pia', `Thanks ${finalData.name}! We've got everything we need. Our team will review your project and get back to you within 24 hours.`)
+      addMessage('pia', `Thanks ${finalData.name}! Check your email — we've sent you a link to schedule a discovery call with the Cre8ve team.`)
     }, 600)
   }
 
