@@ -198,22 +198,12 @@ export default function PIAChatbot() {
     setSubmitting(true)
     setStep('done')
 
-    const payload = {
-      ...finalData,
-      source: 'PIA Chatbot',
-      timestamp: new Date().toISOString(),
-    }
-
     try {
-      const webhookUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_WEBHOOK
-      if (webhookUrl) {
-        await fetch(webhookUrl, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        })
-      }
+      await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(finalData),
+      })
     } catch {
       // Silently fail — we still show confirmation
     }
