@@ -47,7 +47,7 @@ export default function Privacy() {
 
           <div>
             <h2 className="text-xl font-semibold text-white mb-2">7. Data Deletion</h2>
-            <p>To request deletion of your data, email <a href="mailto:hello@cre8ve.xyz" className="text-blue-400 hover:underline">hello@cre8ve.xyz</a> with the subject "Data Deletion Request". We will process your request within 30 days.</p>
+            <p>To request deletion of your data, email <a href="mailto:hello@cre8ve.xyz" className="text-blue-400 hover:underline">hello@cre8ve.xyz</a> with the subject &ldquo;Data Deletion Request&rdquo;. We will process your request within 30 days.</p>
           </div>
 
           <div>
