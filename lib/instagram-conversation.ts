@@ -1,103 +1,47 @@
-type State = 'name' | 'email' | 'requirement' | 'projectType' | 'budget' | 'timeline' | 'done'
+type State = 'follow' | 'engage' | 'waiting'
 
 interface Session {
   state: State
-  name?: string
-  email?: string
-  requirement?: string
-  projectType?: string
-  budget?: string
-  timeline?: string
 }
 
 // In-memory store keyed by Instagram sender ID
 const sessions = new Map<string, Session>()
 
-const GREETING_RE = /^(hi|hello|hey|sup|yo|hiya|howdy|what'?s up|good\s+(morning|afternoon|evening))[!?.,]?\s*$/i
-
-function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-}
-
 export async function handleMessage(senderId: string, text: string): Promise<string> {
-  const msg = text.trim()
+  const msg = text.trim().toLowerCase()
 
-  // Start or restart on greeting / no session
-  if (!sessions.has(senderId) || GREETING_RE.test(msg)) {
-    sessions.set(senderId, { state: 'name' })
-    return "Hey! 👋 I'm PIA, Cre8ve's AI assistant. What's your name?"
+  // First message or no session — welcome + ask to follow
+  if (!sessions.has(senderId)) {
+    sessions.set(senderId, { state: 'follow' })
+    return `Hey! 👋 Thanks for reaching out to Cre8ve.\n\nWe build AI systems, websites, automations & brands for businesses that want to move fast.\n\nBefore we chat — make sure you're following @cre8ve.xyz so we can stay connected! 🔔\n\nOnce you've hit follow, drop a "done" and I'll show you what's next.`
   }
 
   const session = sessions.get(senderId)!
 
   switch (session.state) {
-    case 'name': {
-      session.name = msg
-      session.state = 'email'
-      return `Nice to meet you, ${msg}! What's your email address?`
+    case 'follow': {
+      // They replied — assume they followed (or will)
+      session.state = 'engage'
+      return `Awesome, appreciate you! 🙌\n\nHere's how you can get started with us:\n\n1️⃣ Visit cre8ve.xyz and tap "Start a Project" — it takes 2 mins to fill out your brief\n\n2️⃣ Or just drop your idea right here — what are you looking to build? Our team will get back to you.\n\nWhat works best for you?`
     }
 
-    case 'email': {
-      if (!isValidEmail(msg)) {
-        return "Hmm, that doesn't look like a valid email. Can you double-check it?"
+    case 'engage': {
+      // Check if they want to leave a message here
+      const wantsWebsite = /website|site|visit|link|1|start a project/i.test(msg)
+
+      if (wantsWebsite) {
+        session.state = 'waiting'
+        return `Here you go 👇\n\nhttps://cre8ve.xyz\n\nTap "Start a Project" at the top — PIA (our AI assistant) will walk you through your brief in under 2 mins.\n\nOr if you'd rather chat here, just send me your idea and we'll take it from there! 🚀`
       }
-      session.email = msg
-      session.state = 'requirement'
-      return "Got it. What are you looking to build? Tell me about your project."
+
+      // They're dropping their idea/message
+      session.state = 'waiting'
+      return `Got it! 🔥 Our team will review your message and get back to you shortly.\n\nIn the meantime, check out what we've built at cre8ve.xyz\n\nTalk soon! 💬`
     }
 
-    case 'requirement': {
-      if (msg.length < 10) {
-        return "Can you tell me a bit more about what you're looking to build?"
-      }
-      session.requirement = msg
-      session.state = 'projectType'
-      return "What type of project is it? Reply:\nAI App / Branding / Automation / Website / Other"
-    }
-
-    case 'projectType': {
-      session.projectType = msg
-      session.state = 'budget'
-      return "What's your budget range? Reply:\n<$5K / $5K–$15K / $15K–$50K / $50K+ / Not Sure"
-    }
-
-    case 'budget': {
-      session.budget = msg
-      session.state = 'timeline'
-      return "And your timeline? Reply:\nASAP / 1–2 months / 3–6 months / Flexible"
-    }
-
-    case 'timeline': {
-      session.timeline = msg
-      session.state = 'done'
-
-      const calendlyLink = process.env.CALENDLY_LINK || 'https://calendly.com/hello-cre8ve/30min'
-      submitLead(session).catch(console.error)
-
-      return `Thanks ${session.name}! Check your email — I've sent your project summary there.\n\nBook your discovery call: ${calendlyLink} 🚀`
-    }
-
-    case 'done': {
-      // Restart the flow for follow-up messages
-      sessions.set(senderId, { state: 'name' })
-      return "Hey again! 👋 What's your name?"
+    case 'waiting': {
+      // Any follow-up messages after the flow
+      return `Hey! 👋 Our team has your message and will get back to you.\n\nNeed faster help? Head to cre8ve.xyz and tap "Start a Project" — PIA will get your brief sorted in 2 mins. 🚀`
     }
   }
-}
-
-async function submitLead(session: Session): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://cre8ve.xyz'
-  await fetch(`${baseUrl}/api/lead`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name: session.name,
-      email: session.email,
-      requirement: session.requirement,
-      projectType: session.projectType,
-      budget: session.budget,
-      timeline: session.timeline,
-      source: 'Instagram DM',
-    }),
-  })
 }
