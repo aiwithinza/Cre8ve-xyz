@@ -51,31 +51,37 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(401).json({ error: 'Invalid signature' })
   }
 
-  let body: { entry?: Array<{ messaging?: Array<{ sender?: { id: string }; message?: { text: string } }> }> }
+  let body: { entry?: Array<{ messaging?: Array<{ sender?: { id: string }; recipient?: { id: string }; message?: { text: string; is_echo?: boolean } }> }> }
   try {
     body = JSON.parse(rawBody)
   } catch {
     return res.status(400).json({ error: 'Invalid JSON' })
   }
 
-  // Respond 200 immediately — Meta requires < 200ms acknowledgement
-  res.status(200).json({ status: 'ok' })
+  console.log('[instagram webhook] payload:', JSON.stringify(body))
 
-  // Process messages asynchronously after responding
+  // Process messages before responding (Vercel may kill the function after response)
+  const pageId = process.env.INSTAGRAM_USER_ID
   const entries = body?.entry ?? []
   for (const entry of entries) {
     const messaging = entry?.messaging ?? []
     for (const event of messaging) {
       const senderId = event?.sender?.id
       const text = event?.message?.text
-      if (senderId && text) {
-        try {
-          const reply = await handleMessage(senderId, text)
-          await sendMessage(senderId, reply)
-        } catch (err) {
-          console.error('[instagram webhook] DM error:', err)
-        }
+      const isEcho = event?.message?.is_echo
+
+      // Skip echo messages (sent by the page itself) and messages without text
+      if (!senderId || !text || isEcho || senderId === pageId) continue
+
+      try {
+        const reply = await handleMessage(senderId, text)
+        await sendMessage(senderId, reply)
+        console.log('[instagram webhook] replied to', senderId)
+      } catch (err) {
+        console.error('[instagram webhook] DM error:', err)
       }
     }
   }
+
+  return res.status(200).json({ status: 'ok' })
 }
