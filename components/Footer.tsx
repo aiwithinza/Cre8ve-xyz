@@ -2,10 +2,21 @@ import { Twitter, Github, Linkedin } from 'lucide-react'
 import BrandLogo from './BrandLogo'
 import { usePIA } from './PIAContext'
 
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
 const socials = [
   { icon: Twitter, label: 'Twitter', href: 'https://twitter.com/cre8vexyz' },
   { icon: Github, label: 'GitHub', href: 'https://github.com/cre8ve' },
   { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/company/cre8ve' },
+  { icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/cre8ve.xyz/' },
 ]
 
 const footerLinks = {
