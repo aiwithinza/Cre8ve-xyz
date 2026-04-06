@@ -19,7 +19,8 @@ export default function Home() {
           content="Cre8ve builds AI-powered applications and automation systems that real people actually use. From AI resume builders to intelligent assistants — custom AI development, done right."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="canonical" href="https://cre8ve.xyz" />
         <meta property="og:title" content="Cre8ve | AI App Development & Intelligent Automation" />
         <meta property="og:description" content="Custom AI app development and intelligent automation. We build AI products designed for real people — not just technical users." />
