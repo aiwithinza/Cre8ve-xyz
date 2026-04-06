@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { BrainCircuit, Cpu, Network, Zap, Layers, Cable, type LucideIcon } from 'lucide-react'
 import { useCallback, useRef } from 'react'
 
@@ -49,7 +49,9 @@ const capabilities = [
   },
 ]
 
-function CapabilityCard({ item, index }: { item: typeof capabilities[0]; index: number }) {
+const CARD_COUNT = capabilities.length
+
+function CardContent({ item, index }: { item: typeof capabilities[0]; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null)
   const Icon = iconMap[item.icon]
   const isHero = index === 0
@@ -63,15 +65,10 @@ function CapabilityCard({ item, index }: { item: typeof capabilities[0]; index: 
   }, [])
 
   return (
-    <motion.div
+    <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      initial={{ opacity: 0, y: 30, scale: isHero ? 0.95 : 0.97 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      whileHover={{ y: -6, scale: 1.015 }}
-      viewport={{ once: true }}
-      transition={{ duration: isHero ? 1 : 0.8, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
-      className="glass-morphism p-8 md:p-10 rounded-3xl group relative overflow-hidden h-full flex flex-col justify-between shadow-2xl hover:shadow-[0_20px_80px_-20px_rgba(255,122,26,0.3)] transition-all duration-500 border border-white/[0.08]"
+      className="glass-morphism p-8 md:p-10 rounded-3xl group relative overflow-hidden flex flex-col justify-between shadow-2xl hover:shadow-[0_20px_80px_-20px_rgba(255,122,26,0.3)] transition-all duration-500 border border-white/[0.08] min-h-[360px] md:min-h-[420px]"
     >
       {/* Gradient neon border on hover */}
       <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden z-20">
@@ -148,19 +145,106 @@ function CapabilityCard({ item, index }: { item: typeof capabilities[0]; index: 
           </span>
         </div>
       </div>
+    </div>
+  )
+}
+
+function StickyCard({ item, index, containerRef }: {
+  item: typeof capabilities[0]
+  index: number
+  containerRef: React.RefObject<HTMLDivElement | null>
+}) {
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  })
+
+  // Each card occupies a slice of the total scroll
+  const cardStart = index / CARD_COUNT
+  const cardEnd = (index + 1) / CARD_COUNT
+
+  // Card drops in: translate from below
+  const y = useTransform(
+    scrollYProgress,
+    [cardStart, cardStart + 0.08],
+    ['80vh', '0vh']
+  )
+
+  // Card fades in
+  const opacity = useTransform(
+    scrollYProgress,
+    [cardStart, cardStart + 0.06],
+    [0, 1]
+  )
+
+  // Previous card scales down + fades when next card arrives
+  const exitScale = useTransform(
+    scrollYProgress,
+    [cardEnd - 0.08, cardEnd],
+    [1, 0.85]
+  )
+
+  const exitOpacity = useTransform(
+    scrollYProgress,
+    [cardEnd - 0.08, cardEnd],
+    [1, 0]
+  )
+
+  const exitY = useTransform(
+    scrollYProgress,
+    [cardEnd - 0.08, cardEnd],
+    ['0vh', '-10vh']
+  )
+
+  // Combine enter + exit
+  const combinedOpacity = useTransform(() => {
+    const enterVal = index === 0 ? 1 : opacity.get()
+    const exitVal = index === CARD_COUNT - 1 ? 1 : exitOpacity.get()
+    return Math.min(enterVal, exitVal)
+  })
+
+  const combinedY = useTransform(() => {
+    const enterVal = index === 0 ? 0 : parseFloat(y.get())
+    const exitVal = index === CARD_COUNT - 1 ? 0 : parseFloat(exitY.get())
+    if (enterVal > 1) return `${enterVal}vh`
+    return `${exitVal}vh`
+  })
+
+  const combinedScale = useTransform(() => {
+    const enterVal = index === 0 ? 1 : opacity.get() < 0.95 ? 0.96 : 1
+    const exitVal = index === CARD_COUNT - 1 ? 1 : exitScale.get()
+    return Math.min(enterVal, exitVal)
+  })
+
+  return (
+    <motion.div
+      style={{
+        y: combinedY,
+        opacity: combinedOpacity,
+        scale: combinedScale,
+        zIndex: index + 1,
+      }}
+      className="sticky top-[25vh] w-full max-w-3xl mx-auto will-change-transform"
+    >
+      <CardContent item={item} index={index} />
     </motion.div>
   )
 }
 
 export default function Capabilities() {
-  return (
-    <section id="capabilities" className="py-24 md:py-40 relative overflow-hidden">
-      {/* Ambient background glows */}
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] -translate-x-1/3 -translate-y-1/4 bg-brand/[0.04] blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] translate-x-1/4 translate-y-1/4 bg-steel/[0.04] blur-[120px] rounded-full pointer-events-none" />
+  const cardsRef = useRef<HTMLDivElement>(null)
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-14 md:mb-20 gap-10">
+  return (
+    <section id="capabilities" className="relative">
+      {/* Ambient background glows */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] -translate-x-1/3 -translate-y-1/4 bg-brand/[0.04] blur-[120px] rounded-full" />
+        <div className="absolute bottom-1/2 right-0 w-[500px] h-[500px] translate-x-1/4 bg-steel/[0.04] blur-[120px] rounded-full" />
+      </div>
+
+      {/* Header — scrolls away naturally */}
+      <div className="relative z-10 pt-24 md:pt-40 pb-16 md:pb-24">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-2xl">
             <motion.h2
               initial={{ opacity: 0, x: -20 }}
@@ -191,26 +275,22 @@ export default function Capabilities() {
             </motion.span>
           </div>
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 md:gap-8 auto-rows-[minmax(300px,auto)]">
-          {capabilities.map((item, i) => {
-            let colSpan = 'md:col-span-3 lg:col-span-4';
-            let rowSpan = 'row-span-1';
-
-            if (i === 0 || i === 3) {
-              colSpan = 'md:col-span-6 lg:col-span-8';
-              rowSpan = 'row-span-1';
-            } else if (i === 4 || i === 5) {
-              colSpan = 'md:col-span-3 lg:col-span-6';
-            }
-
-            return (
-              <div key={item.num} className={`${colSpan} ${rowSpan} h-full`}>
-                <CapabilityCard item={item} index={i} />
-              </div>
-            );
-          })}
-        </div>
+      {/* Scroll-driven card stack — separate scroll container */}
+      <div
+        ref={cardsRef}
+        className="relative px-6"
+        style={{ height: `${CARD_COUNT * 100}vh` }}
+      >
+        {capabilities.map((item, i) => (
+          <StickyCard
+            key={item.num}
+            item={item}
+            index={i}
+            containerRef={cardsRef}
+          />
+        ))}
       </div>
     </section>
   )
