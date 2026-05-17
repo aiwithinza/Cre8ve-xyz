@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1584px; height: 396px; overflow: hidden; background: #080808; }
+
+.banner {
+  width: 1584px;
+  height: 396px;
+  background: #080808;
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  overflow: hidden;
+}
+
+.bg-glow {
+  position: absolute;
+  top: -60px; left: 500px;
+  width: 700px; height: 500px;
+  background: radial-gradient(ellipse, rgba(255,122,26,0.11) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.bg-glow-right {
+  position: absolute;
+  top: 0; right: 0;
+  width: 420px; height: 400px;
+  background: radial-gradient(ellipse at 100% 50%, rgba(70,130,180,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.top-line {
+  position: absolute;
+  top: 0; left: 240px; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, rgba(255,122,26,0.4), rgba(255,122,26,0.15), transparent);
+}
+
+.left-space {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-img {
+  height: 60px;
+  width: auto;
+  margin-bottom: 12px;
+}
+
+.ai-solutions {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.tagline {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  color: rgba(255,255,255,0.28);
+  text-transform: uppercase;
+}
+
+.divider {
+  width: 1px;
+  height: 140px;
+  background: linear-gradient(to bottom, transparent, rgba(255,122,26,0.4) 40%, rgba(255,122,26,0.4) 60%, transparent);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.right {
+  width: 520px;
+  padding: 0 52px 0 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.services-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255,122,26,0.7);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.service-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #FF7A1A;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.service-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.72);
+  letter-spacing: 0.5px;
+}
+
+.contact-divider {
+  width: 40px;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  margin: 18px 0 14px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-row svg { flex-shrink: 0; opacity: 0.45; }
+
+.contact-text {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+}
+
+.contact-text .em {
+  color: rgba(255,255,255,0.72);
+  font-weight: 500;
+}
+
+.contact-sep {
+  color: rgba(255,255,255,0.2);
+  margin: 0 6px;
+}
+</style>
+</head>
+<body>
+<div class="banner">
+  <div class="bg-glow"></div>
+  <div class="bg-glow-right"></div>
+  <div class="top-line"></div>
+
+  <div class="left-space"></div>
+
+  <div class="center">
+    <img class="logo-img" src="cre8ve-logo.png" alt="Cre8ve">
+    <div class="ai-solutions">AI Solutions</div>
+    <div class="tagline">Intelligence Engineered</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="right">
+    <div class="services-label">What we do</div>
+
+    <div class="service-item">
+      <div class="service-dot"></div>
+      <div class="service-name">AI Automation &amp; Chatbots</div>
+    </div>
+    <div class="service-item">
+      <div class="service-dot"></div>
+      <div class="service-name">Business Process Automation</div>
+    </div>
+    <div class="service-item">
+      <div class="service-dot"></div>
+      <div class="service-name">Custom AI Workflow Design</div>
+    </div>
+    <div class="service-item">
+      <div class="service-dot"></div>
+      <div class="service-name">Digital Transformation</div>
+    </div>
+
+    <div class="contact-divider"></div>
+
+    <div class="contact-row">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <circle cx="7" cy="7" r="6" stroke="white" stroke-width="1.2"/>
+        <ellipse cx="7" cy="7" rx="2.5" ry="6" stroke="white" stroke-width="1.2"/>
+        <line x1="1" y1="7" x2="13" y2="7" stroke="white" stroke-width="1.2"/>
+      </svg>
+      <span class="contact-text"><span class="em">cre8ve.xyz</span></span>
+      <span class="contact-sep">·</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M7 1.5C5 1.5 3 3.5 3 6C3 9 7 12.5 7 12.5C7 12.5 11 9 11 6C11 3.5 9 1.5 7 1.5Z" stroke="white" stroke-width="1.2"/>
+        <circle cx="7" cy="6" r="1.5" stroke="white" stroke-width="1.2"/>
+      </svg>
+      <span class="contact-text">Kochi, Kerala · India</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

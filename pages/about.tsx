@@ -63,7 +63,7 @@ export default function About() {
               >
                 <div className="relative aspect-[3/4] overflow-hidden">
                   <Image
-                    src="/prayaga.jpg"
+                    src="/assets/photos/prayaga.jpg"
                     alt="Prayaga — Founder & CEO of Cre8ve"
                     fill
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
@@ -85,7 +85,7 @@ export default function About() {
               >
                 <div className="relative aspect-[3/4] overflow-hidden">
                   <Image
-                    src="/inza.jpg"
+                    src="/assets/photos/inza.jpg"
                     alt="Inza — Co-founder & COO of Cre8ve"
                     fill
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-105"

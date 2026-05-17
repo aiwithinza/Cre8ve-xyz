@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1584px; height: 396px; overflow: hidden; background: #080808; }
+
+.banner {
+  width: 1584px;
+  height: 396px;
+  background: #080808;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  overflow: hidden;
+}
+
+.bg-glow-1 {
+  position: absolute;
+  top: -100px; left: 50%; transform: translateX(-50%);
+  width: 900px; height: 600px;
+  background: radial-gradient(ellipse, rgba(255,122,26,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.bg-glow-2 {
+  position: absolute;
+  bottom: -60px; right: 80px;
+  width: 400px; height: 300px;
+  background: radial-gradient(ellipse, rgba(70,130,180,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.top-line {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #FF7A1A, rgba(255,122,26,0.3), transparent);
+}
+
+.grid {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-img {
+  height: 72px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.ai-solutions {
+  font-size: 22px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.sep {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,122,26,0.6), transparent);
+  margin: 18px 0;
+}
+
+.tagline {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 6px;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  margin-bottom: 26px;
+}
+
+.pills {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.pill {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 100px;
+}
+
+.pill-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255,122,26,0.5);
+}
+
+.contact-line {
+  font-size: 14px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 1px;
+}
+
+.contact-line span {
+  color: rgba(255,255,255,0.5);
+}
+</style>
+</head>
+<body>
+<div class="banner">
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+  <div class="grid"></div>
+  <div class="top-line"></div>
+
+  <div class="content">
+    <img class="logo-img" src="cre8ve-logo.png" alt="Cre8ve">
+    <div class="ai-solutions">AI Solutions</div>
+
+    <div class="sep"></div>
+
+    <div class="tagline">Intelligence Engineered</div>
+
+    <div class="pills">
+      <div class="pill">AI Automation</div>
+      <div class="pill-dot"></div>
+      <div class="pill">Chatbots &amp; Agents</div>
+      <div class="pill-dot"></div>
+      <div class="pill">Process Automation</div>
+      <div class="pill-dot"></div>
+      <div class="pill">Digital Transformation</div>
+    </div>
+
+    <div class="contact-line">Kochi, Kerala · India &nbsp;·&nbsp; <span>cre8ve.xyz</span> &nbsp;·&nbsp; <span>hello@cre8ve.xyz</span></div>
+  </div>
+</div>
+</body>
+</html>

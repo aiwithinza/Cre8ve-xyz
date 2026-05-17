@@ -1,0 +1,15 @@
+<svg height="80" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cre8ve-grad" x1="0%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#4682B4" />
+      <stop offset="60%" stop-color="#FF7A1A" />
+      <stop offset="100%" stop-color="#FF7A1A" />
+    </linearGradient>
+  </defs>
+  <path d="M38 8C20.3 8 6 22.3 6 40s14.3 32 32 32c11.5 0 21.5-6 27.2-15.1C59.5 64.8 50.3 70 40 70c-16.6 0-30-13.4-30-30S23.4 10 40 10c10.3 0 19.5 5.2 25.2 13.1C59.5 14 49.5 8 38 8z" fill="url(#cre8ve-grad)" />
+  <text x="68" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">r</text>
+  <text x="92" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+  <text x="122" y="58" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="url(#cre8ve-grad)" letter-spacing="-1">8</text>
+  <text x="156" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">v</text>
+  <text x="186" y="58" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="500" fill="white" letter-spacing="-1">e</text>
+</svg>
