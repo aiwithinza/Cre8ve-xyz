@@ -10,13 +10,26 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+    --surface-black: #030405;
+    --surface-raised: rgba(11, 12, 14, 0.74);
+  }
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
+    overflow-x: clip;
   }
 
   body {
-    @apply bg-black text-white antialiased;
+    @apply text-white antialiased;
+    overflow-x: clip;
+    background:
+      radial-gradient(circle at 15% 8%, rgba(255, 122, 26, 0.055), transparent 34%),
+      radial-gradient(circle at 86% 24%, rgba(70, 130, 180, 0.05), transparent 32%),
+      var(--surface-black);
   }
 
   ::selection {
@@ -70,6 +83,138 @@
     @apply bg-surface/50 backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
   }
 
+  .glass-subtle {
+    @apply bg-white/[0.024] backdrop-blur-lg border border-white/[0.07] shadow-[0_10px_50px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.055)];
+  }
+
+  .glass-panel {
+    @apply bg-[rgba(9,10,12,0.72)] backdrop-blur-2xl border border-white/[0.11] shadow-[0_24px_90px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.09)];
+  }
+
+  .glass-prismatic {
+    @apply bg-[rgba(11,12,14,0.78)] backdrop-blur-3xl border border-white/[0.15] shadow-[0_30px_120px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.11)];
+    background-image:
+      linear-gradient(135deg, rgba(255, 122, 26, 0.14), transparent 28%, rgba(70, 130, 180, 0.13) 72%, transparent),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.008));
+  }
+
+  .cinematic-stage {
+    background:
+      radial-gradient(circle at 50% 8%, rgba(255, 122, 26, 0.085), transparent 28%),
+      radial-gradient(circle at 82% 72%, rgba(70, 130, 180, 0.07), transparent 30%),
+      linear-gradient(180deg, #050607 0%, #020303 58%, #050505 100%);
+  }
+
+  .cinematic-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      radial-gradient(circle at 50% 20%, rgba(255, 122, 26, 0.11), transparent 34%),
+      radial-gradient(circle at 82% 72%, rgba(70, 130, 180, 0.09), transparent 30%);
+    background-size: 72px 72px, 72px 72px, 100% 100%, 100% 100%;
+  }
+
+  .cinematic-stage.cinematic-grid {
+    background-color: var(--surface-black);
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+      radial-gradient(circle at 48% 14%, rgba(255, 122, 26, 0.12), transparent 34%),
+      radial-gradient(circle at 86% 74%, rgba(70, 130, 180, 0.095), transparent 32%),
+      linear-gradient(180deg, #050607 0%, #020303 58%, #050505 100%);
+    background-size: 72px 72px, 72px 72px, 100% 100%, 100% 100%, 100% 100%;
+  }
+
+  .kinetic-mask {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+  }
+
+  .copy-readable {
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .copy-muted {
+    color: rgba(255, 255, 255, 0.52);
+  }
+
+  .source-orbit {
+    background:
+      conic-gradient(from var(--border-angle), rgba(255,122,26,0), rgba(255,122,26,0.55), rgba(70,130,180,0.45), rgba(255,122,26,0));
+    animation: energy-orbit 8s linear infinite;
+  }
+
+  .cinematic-foreground-haze {
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 46% 38%, rgba(255,122,26,0.18), transparent 28%),
+      radial-gradient(circle at 62% 58%, rgba(70,130,180,0.16), transparent 32%),
+      linear-gradient(90deg, rgba(0,0,0,0.5), transparent 28%, transparent 72%, rgba(0,0,0,0.52));
+    filter: blur(24px);
+    opacity: 0.72;
+  }
+
+  .glass-refraction-edge {
+    box-shadow:
+      0 30px 120px rgba(0,0,0,0.48),
+      inset 0 1px 0 rgba(255,255,255,0.13),
+      inset 0 -1px 0 rgba(70,130,180,0.12);
+  }
+
+  .soft-depth-shadow {
+    filter: drop-shadow(0 46px 90px rgba(0,0,0,0.44));
+  }
+
+  .phase-pulse-line {
+    background: linear-gradient(90deg, transparent, rgba(255,122,26,0.72), rgba(70,130,180,0.58), transparent);
+    box-shadow: 0 0 22px rgba(255,122,26,0.24);
+    animation: phase-pulse 2.6s var(--ease-out-expo) infinite;
+  }
+
+  .spline-stage-shell {
+    background:
+      radial-gradient(circle at 52% 38%, rgba(255,122,26,0.14), transparent 25%),
+      radial-gradient(circle at 67% 60%, rgba(70,130,180,0.16), transparent 30%),
+      linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.012));
+  }
+
+  .spline-fallback-field {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px),
+      radial-gradient(circle at 50% 42%, rgba(255,122,26,0.18), transparent 30%);
+    background-size: 44px 44px, 44px 44px, 100% 100%;
+  }
+
+  .prismatic-sheen {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .prismatic-sheen::after {
+    content: '';
+    position: absolute;
+    inset: -40%;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.12) 48%, rgba(70,130,180,0.12) 52%, transparent 64%);
+    transform: translateX(-45%) rotate(8deg);
+    animation: prismatic-sheen 7s var(--ease-in-out-strong) infinite;
+  }
+
+  .scanline-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, rgba(255,122,26,0.08), transparent);
+    transform: translateY(-100%);
+    animation: boot-scan 3.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  }
+
+  .depth-fade {
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.72) 74%, #000 100%);
+  }
+
 
   .bg-gradient-brand {
     background: linear-gradient(135deg, #FF7A1A 0%, #4682B4 100%);
@@ -80,7 +225,7 @@
   }
 
   .neon-border-hover {
-    @apply hover:border-brand/40 hover:shadow-[0_0_25px_rgba(255,122,26,0.2)] transition-all duration-500;
+    @apply hover:border-brand/40 hover:shadow-[0_0_25px_rgba(255,122,26,0.2)] transition-[border-color,box-shadow] duration-300;
   }
 
   /* Orbiting energy border — thin glowing line travels around the button perimeter */
@@ -91,6 +236,15 @@
       linear-gradient(135deg, #FF7A1A 0%, #4682B4 100%) padding-box,
       conic-gradient(from var(--border-angle), transparent 60%, rgba(255,122,26,0.4) 75%, #FF7A1A 85%, rgba(255,122,26,0.4) 95%, transparent 100%) border-box;
     animation: energy-orbit 4s linear infinite;
+  }
+
+  .pressable {
+    transition: transform 160ms var(--ease-out-expo), box-shadow 220ms var(--ease-out-expo), border-color 220ms var(--ease-out-expo), background 220ms var(--ease-out-expo);
+    touch-action: manipulation;
+  }
+
+  .pressable:active {
+    transform: scale(0.97);
   }
 
   .hover-pulse:hover {
@@ -111,6 +265,35 @@
 /* Keyframe for energy-orbit — animates the CSS custom property */
 @keyframes energy-orbit {
   to { --border-angle: 360deg; }
+}
+
+@keyframes boot-scan {
+  0% { transform: translateY(-110%); opacity: 0; }
+  18% { opacity: 1; }
+  100% { transform: translateY(110%); opacity: 0; }
+}
+
+@keyframes prismatic-sheen {
+  0%, 18% { transform: translateX(-55%) rotate(8deg); opacity: 0; }
+  34%, 48% { opacity: 0.8; }
+  72%, 100% { transform: translateX(55%) rotate(8deg); opacity: 0; }
+}
+
+@keyframes phase-pulse {
+  0% { opacity: 0.12; transform: scaleX(0.35); transform-origin: left; }
+  42% { opacity: 0.9; transform: scaleX(1); transform-origin: left; }
+  100% { opacity: 0.18; transform: scaleX(0.3); transform-origin: right; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
 }
 
 @media print {

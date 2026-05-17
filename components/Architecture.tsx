@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion, useTransform } from 'framer-motion'
 import { BrainCircuit, Database, Workflow, Bot, Monitor } from 'lucide-react'
 import { WaveText } from '@/components/ui/wave-text'
+import { motionPatterns, motionTokens, useScrollScene, viewportOnce } from '@/hooks/useScrollScene'
 
 const peripherals = [
   { id: 'models', label: 'MODELS', icon: BrainCircuit, protocol: 'API', position: 'top' },
@@ -90,7 +91,7 @@ function ConnectionLine({ direction, protocol, index }: { direction: 'vertical' 
       <motion.span
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
+        viewport={viewportOnce}
         transition={{ delay: 2 + index * 0.1 }}
         className={`absolute font-mono text-[8px] md:text-[9px] tracking-[0.2em] text-white/15 ${
           isVertical ? 'left-6 top-1/2 -translate-y-1/2' : 'top-5 left-1/2 -translate-x-1/2'
@@ -108,13 +109,14 @@ function PeripheralNode({ node, delay }: { node: typeof peripherals[0]; delay: n
     <motion.div
       initial={{ opacity: 0, scale: 0.85 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+      viewport={viewportOnce}
+      transition={{ ...motionTokens.reveal, delay }}
       className="flex items-center justify-center"
     >
       <motion.div
         whileHover={{ scale: 1.08 }}
-        className="relative flex flex-col items-center gap-1.5 md:gap-3 rounded-2xl glass-morphism px-3 py-3 md:px-8 md:py-6 border-white/15 transition-all duration-500 hover:shadow-[0_0_50px_rgba(255,122,26,0.25)] hover:border-brand/40"
+        transition={motionTokens.quick}
+        className="relative flex flex-col items-center gap-1.5 md:gap-3 rounded-2xl glass-panel px-3 py-3 md:px-8 md:py-6 border-white/15 transition-[box-shadow,border-color,transform] duration-300 hover:shadow-[0_0_60px_rgba(255,122,26,0.28)] hover:border-brand/45 prismatic-sheen"
       >
         <Icon className="w-4 h-4 md:w-6 md:h-6 text-brand" strokeWidth={1.2} />
         <span className="font-mono text-[8px] md:text-[11px] tracking-[0.2em] text-white/80">
@@ -127,33 +129,69 @@ function PeripheralNode({ node, delay }: { node: typeof peripherals[0]; delay: n
 }
 
 export default function Architecture() {
+  const { ref, scrollYProgress } = useScrollScene<HTMLElement>()
+  const shouldReduceMotion = useReducedMotion()
+  const diagramY = useTransform(scrollYProgress, [0, 0.5, 1], [90, 0, -70])
+  const diagramScale = useTransform(scrollYProgress, [0, 0.48, 1], [0.88, 1, 0.96])
+  const shardRotate = useTransform(scrollYProgress, [0, 1], [-18, 22])
+  const orbitalOpacity = useTransform(scrollYProgress, [0, 0.45, 1], [0.15, 0.55, 0.22])
+
   return (
-    <section id="architecture" className="py-24 md:py-40 bg-black overflow-hidden relative">
+    <section ref={ref} id="architecture" className="py-24 md:py-40 overflow-hidden relative cinematic-stage cinematic-grid">
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          className="absolute left-1/2 top-1/2 h-[760px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand/[0.1]"
+          style={{ opacity: orbitalOpacity }}
+        />
+        <motion.div
+          className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-steel/[0.12]"
+          style={{ opacity: orbitalOpacity }}
+        />
+        {[
+          'left-[8%] top-[18%] h-20 w-36',
+          'right-[9%] top-[24%] h-24 w-28',
+          'bottom-[18%] left-[13%] h-28 w-24',
+          'bottom-[20%] right-[15%] h-16 w-40',
+        ].map((className, index) => (
+          <motion.div
+            key={className}
+            className={`absolute hidden rounded-2xl glass-subtle glass-refraction-edge md:block ${className}`}
+            initial={{ opacity: 0, y: 80, scale: 0.86 }}
+            whileInView={{ opacity: 0.16, y: 0, scale: 1 }}
+            viewport={viewportOnce}
+            transition={{ ...motionTokens.reveal, delay: 0.25 + index * 0.12 }}
+            style={{ rotate: shardRotate }}
+          />
+        ))}
+      </div>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={viewportOnce}
+            transition={motionTokens.reveal}
             className="font-heading text-5xl md:text-7xl font-light tracking-tight"
           >
-            Neural Frame <WaveText className="font-medium">v1.0</WaveText>
+            Core Orchestrates <WaveText className="font-medium">v1.0</WaveText>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="font-mono text-brand/40 text-[11px] tracking-[0.3em] uppercase mt-4"
+            viewport={viewportOnce}
+            transition={{ duration: 0.7, delay: 0.24, ease: motionTokens.easeOut }}
+            className="font-mono text-brand/72 text-[11px] tracking-[0.3em] uppercase mt-4"
           >
-            The intelligence orchestration layer
+            The capability core resolves into architecture
           </motion.p>
         </div>
 
         {/* Cardinal Cross Diagram */}
-        <div className="max-w-3xl mx-auto">
+        <motion.div
+          className="max-w-3xl mx-auto"
+          style={{ y: diagramY, scale: diagramScale }}
+        >
           <div className="grid grid-cols-3 grid-rows-3 gap-0" style={{ gridTemplateRows: 'auto 1fr auto', gridTemplateColumns: '1fr auto 1fr' }}>
             {/* Row 1: empty | MODELS | empty */}
             <div />
@@ -182,17 +220,23 @@ export default function Architecture() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.7 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                  viewport={viewportOnce}
+                  transition={{ ...motionPatterns.coreMorph, duration: 0.95 }}
                   className="relative"
                 >
                   <motion.div
+                    className="absolute -inset-8 rounded-full bg-[conic-gradient(from_0deg,rgba(255,122,26,0.22),transparent_34%,rgba(70,130,180,0.2),transparent_70%,rgba(255,122,26,0.22))] blur-2xl"
+                    animate={shouldReduceMotion ? { opacity: 0.35 } : { rotate: 360, opacity: [0.25, 0.5, 0.25] }}
+                    transition={{ rotate: { duration: 18, repeat: Infinity, ease: 'linear' }, opacity: { duration: 4, repeat: Infinity } }}
+                  />
+                  <motion.div
                     whileHover={{ scale: 1.05 }}
-                    className="relative flex flex-col items-center justify-center gap-1.5 md:gap-2 w-24 h-24 md:w-40 md:h-40 rounded-full glass-morphism border-brand/40 bg-brand/[0.06] shadow-[0_0_100px_rgba(255,122,26,0.25)] transition-all duration-500 hover:shadow-[0_0_140px_rgba(255,122,26,0.4)]"
+                    transition={motionTokens.quick}
+                    className="relative flex flex-col items-center justify-center gap-1.5 md:gap-2 w-24 h-24 md:w-40 md:h-40 rounded-full glass-prismatic glass-refraction-edge border-brand/45 bg-brand/[0.07] shadow-[0_0_120px_rgba(255,122,26,0.28)] transition-[box-shadow,transform] duration-300 hover:shadow-[0_0_150px_rgba(255,122,26,0.42)]"
                   >
                     <Workflow className="w-6 h-6 md:w-9 md:h-9 text-brand" strokeWidth={1.2} />
                     <span className="font-mono text-[6px] md:text-[11px] font-bold text-brand tracking-[0.15em] md:tracking-[0.25em]">
-                      ORCHESTRATION
+                      CORE ROUTER
                     </span>
                     <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-brand animate-pulse" />
                   </motion.div>
@@ -226,10 +270,27 @@ export default function Architecture() {
 
             {/* Row 3: empty | INTERFACES | empty */}
             <div />
-            <PeripheralNode node={peripherals[3]} delay={1.0} />
+              <PeripheralNode node={peripherals[3]} delay={1.0} />
             <div />
           </div>
-        </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ ...motionTokens.reveal, delay: 0.35 }}
+          className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-3 rounded-2xl glass-subtle glass-refraction-edge p-3"
+        >
+          {['source', 'capability', 'architecture'].map((label, index) => (
+            <span
+              key={label}
+              className="rounded-xl border border-white/[0.06] bg-white/[0.025] px-3 py-3 text-center font-mono text-[8px] uppercase tracking-[0.24em] text-white/48 md:text-[10px]"
+            >
+              {String(index + 1).padStart(2, '0')} / {label}
+            </span>
+          ))}
+        </motion.div>
       </div>
     </section>
   )

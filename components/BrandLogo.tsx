@@ -33,6 +33,7 @@ function Cre8veWordmark({ height }: { height: number }) {
   return (
     <svg
       height={height}
+      width={height * 4}
       viewBox="0 0 320 80"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -73,6 +74,7 @@ function Cre8veIcon({ height }: { height: number }) {
   return (
     <svg
       height={height}
+      width={height * 0.8}
       viewBox="0 0 64 80"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
